@@ -21,7 +21,7 @@
           <div class="signin-content">
             <div class="signin-image">
               <figure>
-                <img src="images/signin-image.jpg" alt="sing up image" />
+                <img src="/images/login_hall.png" alt="sing up image" />
               </figure>
               <a href="#" class="signup-image-link">Create an account</a>
             </div>
@@ -37,6 +37,7 @@
                     name="your_name"
                     id="your_name"
                     placeholder="Your Name"
+                    autocomplete="off"
                   />
                 </div>
                 <div class="form-group">
@@ -46,6 +47,7 @@
                     name="your_pass"
                     id="your_pass"
                     placeholder="Password"
+                    autocomplete="new-password"
                   />
                 </div>
                 <div class="form-group">
@@ -95,7 +97,7 @@
       </section>
       <section class="signup">
         <div class="container">
-          <div class="signup-content">
+          <div class="signup-content hidden">
             <div class="signup-form">
               <h2 class="form-title">Sign up</h2>
               <form method="POST" class="register-form" id="register-form">
@@ -164,31 +166,14 @@
             </div>
             <div class="signup-image">
               <figure>
-                <img src="images/signup-image.jpg" alt="sing up image" />
+                <img src="/images/register_hall.png" alt="sing up image" />
               </figure>
-              <a href="#" class="signup-image-link">I am already member</a>
+              <a href="#" class="signin-image-link">I am already member</a>
             </div>
           </div>
         </div>
       </section>
     </div>
-    <script>
-      const loginForm = document.getElementById("login-form");
-      const registrationForm = document.getElementById("register-form");
-      const loginSwitch = document.querySelector("signup-image-link");
-      const registerSwitch = document.querySelector("signup-image-link");
-
-      loginSwitch.addEventListener("change", function () {
-        loginForm.style.display = loginSwitch.checked ? "none" : "block";
-        registrationForm.style.display = loginSwitch.checked ? "block" : "none";
-      });
-
-      registerSwitch.addEventListener("change", function () {
-        loginForm.style.display = registerSwitch.checked ? "block" : "none";
-        registrationForm.style.display = registerSwitch.checked
-          ? "none"
-          : "block";
-      });
-    </script>
+    <script src="/script.js"></script>
   </body>
 </html>
