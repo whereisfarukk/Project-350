@@ -10,6 +10,7 @@ const db = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
+  port: process.env.DB_PORT
 });
 const publicDirectory = path.join(__dirname, "./public");
 app.use(express.static(publicDirectory));
@@ -21,12 +22,12 @@ db.connect((error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log("MySQL Connected...");
+    console.log('db ' + db.state);
   }
 });
 
 app.get("/", (req, res) => {
-  res.render("login");
+  res.render("index");
 });
 
 app.listen(4000, () => {
