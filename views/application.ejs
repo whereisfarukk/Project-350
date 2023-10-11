@@ -23,10 +23,21 @@
 
             <div class="fields">
               <div class="input-field">
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter your name" required />
+                <label>First Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your first name"
+                  required
+                />
               </div>
-
+              <div class="input-field">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your last name"
+                  required
+                />
+              </div>
               <div class="input-field">
                 <label>Date of Birth</label>
                 <input type="date" placeholder="Enter birth date" required />
@@ -55,12 +66,88 @@
                   <option>Others</option>
                 </select>
               </div>
+              <div class="input-field">
+                <label>Merital status</label>
+                <select required>
+                  <option disabled selected>Select status</option>
+                  <option>Married</option>
+                  <option>Unmarried</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="details family">
+            <span class="title">Family Details</span>
+            <div class="fields">
+              <div class="input-field">
+                <label>Father Name</label>
+                <input type="text" placeholder="Enter father name" required />
+              </div>
+
+              <div class="input-field">
+                <label>Mother Name</label>
+                <input type="text" placeholder="Enter mother name" required />
+              </div>
+              <div class="input-field">
+                <label>Parent mobile Number</label>
+                <input
+                  type="number"
+                  placeholder="Enter parent mobile number"
+                  required
+                />
+              </div>
+            </div>
+            <button class="nextBtn">
+              <span class="btnText">Next</span>
+              <i class="uil uil-navigator"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form second">
+          <div class="details address">
+            <span class="title">Address Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label>present Address</label>
+                <input type="text" placeholder="Present Address" required />
+              </div>
+              <div class="input-field">
+                <label>Permanent Address</label>
+                <input type="text" placeholder="Permanent Address" required />
+              </div>
+
+              <div class="input-field">
+                <label>Nationality</label>
+                <input type="text" placeholder="Enter nationality" required />
+              </div>
+
+              <div class="input-field">
+                <label for="district">District</label>
+                <input
+                  type="text"
+                  id="district"
+                  name="district"
+                  placeholder="Enter your district"
+                  required
+                />
+                <div id="suggestions" class="suggestions"></div>
+              </div>
+              <div class="input-field">
+                <label>P.O</label>
+                <input type="number" placeholder="Enter Post Office" required />
+              </div>
+              <div class="input-field">
+                <label>Ward Number</label>
+                <input type="number" placeholder="Enter ward number" required />
+              </div>
             </div>
           </div>
 
           <div class="details ID">
             <span class="title">Identity Details</span>
-
             <div class="fields">
               <div class="input-field">
                 <label>ID Number</label>
@@ -85,7 +172,7 @@
               <div class="input-field">
                 <label>Department</label>
                 <select required>
-                  <option disabled selected>Select semester</option>
+                  <option disabled selected>Select department</option>
                   <option>SWE</option>
                   <option>CSE</option>
                   <option>PAD</option>
@@ -98,82 +185,26 @@
                   <option>ENG</option>
                 </select>
               </div>
-            </div>
-
-            <button class="nextBtn">
-              <span class="btnText">Next</span>
-              <i class="uil uil-navigator"></i>
-            </button>
-          </div>
-        </div>
-
-        <div class="form second">
-          <div class="details address">
-            <span class="title">Address Details</span>
-
-            <div class="fields">
               <div class="input-field">
-                <label>present Address</label>
+                <label>CGPA</label>
+                <input type="number" placeholder="Enter CGPA" required />
+              </div>
+              <div class="input-field">
+                <label>Last semester GPA</label>
                 <input
-                  type="text"
-                  placeholder="Permanent or Temporary"
+                  type="number"
+                  placeholder="Enter last semester GPA (e.g., 3.75)"
                   required
                 />
               </div>
               <div class="input-field">
-                <label>Permanent Address</label>
+                <label>Last semester position</label>
                 <input
-                  type="text"
-                  placeholder="Permanent or Temporary"
+                  type="number"
+                  placeholder="Enter last semester position"
                   required
                 />
               </div>
-
-              <div class="input-field">
-                <label>Nationality</label>
-                <input type="text" placeholder="Enter nationality" required />
-              </div>
-
-              <div class="input-field">
-                <label for="district">District</label>
-                <input
-                  type="text"
-                  id="district"
-                  name="district"
-                  placeholder="Enter your district"
-                  required
-                />
-                <div id="suggestions" class="suggestions"></div>
-              </div>
-
-              <div class="input-field">
-                <label>Ward Number</label>
-                <input type="number" placeholder="Enter ward number" required />
-              </div>
-            </div>
-          </div>
-
-          <div class="details family">
-            <span class="title">Family Details</span>
-
-            <div class="fields">
-              <div class="input-field">
-                <label>Father Name</label>
-                <input type="text" placeholder="Enter father name" required />
-              </div>
-
-              <div class="input-field">
-                <label>Mother Name</label>
-                <input type="text" placeholder="Enter mother name" required />
-              </div>
-            </div>
-            <div class="input-field">
-              <label>Parent mobile Number</label>
-              <input
-                type="number"
-                placeholder="Enter parent mobile number"
-                required
-              />
             </div>
             <div class="buttons">
               <div class="backBtn">
