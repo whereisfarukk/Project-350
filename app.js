@@ -25,7 +25,7 @@ db.connect((error) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("login");
+  res.render("application");
 });
 
 app.listen(4000, () => {
