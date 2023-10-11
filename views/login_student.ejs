@@ -4,14 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Sign Up Form by Colorlib</title>
+    <title>Student Sign In</title>
 
     <link
       rel="stylesheet"
       href="fonts/material-icon/css/material-design-iconic-font.min.css"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="./style.css" />
     <meta name="robots" content="noindex, follow" />
   </head>
   <body>
@@ -21,22 +24,22 @@
           <div class="signin-content">
             <div class="signin-image">
               <figure>
-                <img src="/images/login_hall.png" alt="sing up image" />
+                <img src="/images/login_hall.png" alt="sign up image" />
               </figure>
               <a href="#" class="signup-image-link">Create an account</a>
             </div>
             <div class="signin-form">
-              <h2 class="form-title">Sign in</h2>
+              <h2 class="form-title">Sign in as student</h2>
               <form method="POST" class="register-form" id="login-form">
                 <div class="form-group">
-                  <label for="your_name"
+                  <label for="your_sid"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="your_name"
-                    id="your_name"
-                    placeholder="Your Name"
+                    name="your_sid"
+                    id="your_sid"
+                    placeholder="Your student ID"
                     autocomplete="off"
                   />
                 </div>
@@ -61,7 +64,7 @@
                     ><span><span></span></span>Remember me</label
                   >
                 </div>
-                <div class="form-group form-button">
+                <div id = "loginButton" class="form-group form-button">
                   <input
                     type="submit"
                     name="signin"
@@ -71,7 +74,7 @@
                   />
                 </div>
               </form>
-              <div class="social-login">
+              <!-- <div class="social-login">
                 <span class="social-label">Or login with</span>
                 <ul class="socials">
                   <li>
@@ -90,7 +93,7 @@
                     ></a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -99,17 +102,28 @@
         <div class="container">
           <div class="signup-content hidden">
             <div class="signup-form">
-              <h2 class="form-title">Sign up</h2>
+              <h2 class="form-title">Sign up as student</h2>
               <form method="POST" class="register-form" id="register-form">
                 <div class="form-group">
-                  <label for="name"
+                  <label for="first_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Your Name"
+                    name="first_name"
+                    id="first_name"
+                    placeholder="Your first name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="last_name"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    id="last_name"
+                    placeholder="Your last name"
                   />
                 </div>
                 <div class="form-group">
@@ -119,6 +133,15 @@
                     name="email"
                     id="email"
                     placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="student_id"><i class="zmdi zmdi-student id"></i></label>
+                  <input
+                    type="student_id"
+                    name="student_id"
+                    id="student_id"
+                    placeholder="Your student ID"
                   />
                 </div>
                 <div class="form-group">
@@ -153,7 +176,7 @@
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
-                <div class="form-group form-button">
+                <div id = "regButton" class="form-group form-button">
                   <input
                     type="submit"
                     name="signup"
@@ -166,9 +189,9 @@
             </div>
             <div class="signup-image">
               <figure>
-                <img src="/images/register_hall.png" alt="sing up image" />
+                <img src="/images/register_hall.png" alt="sign up image" />
               </figure>
-              <a href="#" class="signin-image-link">I am already member</a>
+              <a href="#" class="signin-image-link">I am already registered</a>
             </div>
           </div>
         </div>
