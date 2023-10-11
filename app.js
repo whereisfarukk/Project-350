@@ -3,7 +3,7 @@ const path = require("path");
 const mysql = require("mysql");
 const app = express();
 const dotenv = require("dotenv");
-dotenv.config()
+dotenv.config();
 
 const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,
@@ -28,6 +28,14 @@ db.connect((error) => {
 
 app.get("/", (req, res) => {
   res.render("index");
+});
+
+app.get("/login_student", (req, res) => {
+  res.render("login_student");
+});
+
+app.get("/login_admin", (req, res) => {
+  res.render("login_admin");
 });
 
 app.listen(4000, () => {
