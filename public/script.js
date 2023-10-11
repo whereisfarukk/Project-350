@@ -1,3 +1,5 @@
+const { application } = require("express");
+
 const loginForm = document.querySelector(".signin-content");
 const registrationForm = document.querySelector(".signup-content");
 const createAccountLink = document.querySelector(".signup-image-link");
