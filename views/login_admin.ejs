@@ -33,14 +33,26 @@
               <h2 class="form-title">Admin Sign In</h2>
               <form method="POST" class="register-form" id="login-form">
                 <div class="form-group">
-                  <label for="your_name"
+                  <label for="name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="your_name"
-                    id="your_name"
+                    name="name"
+                    id="name"
                     placeholder="Your Name"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="employee_id"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="employee_id"
+                    id="employee_id"
+                    placeholder="Your Employee ID"
                     autocomplete="off"
                   />
                 </div>
@@ -65,14 +77,8 @@
                     ><span><span></span></span>Remember me</label
                   >
                 </div>
-                <div class="form-group form-button">
-                  <input
-                    type="submit"
-                    name="signin"
-                    id="signin"
-                    class="form-submit"
-                    value="Log in"
-                  />
+                <div id = "adminLoginButton" class="form-group form-button">
+                  <a class = "form-submit" href="/admin_dashboard">Login</a>
                 </div>
               </form>
               <!-- <div class="social-login">
@@ -106,14 +112,37 @@
               <h2 class="form-title">Sign up</h2>
               <form method="POST" class="register-form" id="register-form">
                 <div class="form-group">
-                  <label for="name"
+                  <label for="first_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Your Name"
+                    name="first_name"
+                    id="first_name"
+                    placeholder="First Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="last_name"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    id="last_name"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="employee_id"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="employee_id"
+                    id="employee_id"
+                    placeholder="Your Employee ID"
+                    autocomplete="off"
                   />
                 </div>
                 <div class="form-group">
@@ -157,14 +186,8 @@
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
-                <div class="form-group form-button">
-                  <input
-                    type="submit"
-                    name="signup"
-                    id="signup"
-                    class="form-submit"
-                    value="Register"
-                  />
+                <div id = "adminRegButton" class="form-group form-button">
+                  <a class = "form-submit" href="/admin_dashboard">Register</a>
                 </div>
               </form>
             </div>

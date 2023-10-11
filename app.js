@@ -48,8 +48,15 @@ app.get("/dashboard", (req, res) => {
   res.render("dashboard");
 });
 
+app.get("/admin_dashboard", (req, res) => {
+  res.render("admin_dashboard");
+});
+
 app.post('/login_student', (req, res) => {
-  // Redirect or send a response based on your application's logic
+  res.send('Login successful!');
+});
+
+app.post('/login_admin', (req, res) => {
   res.send('Login successful!');
 });
 

@@ -2,8 +2,6 @@ const loginForm = document.querySelector(".signin-content");
 const registrationForm = document.querySelector(".signup-content");
 const createAccountLink = document.querySelector(".signup-image-link");
 const alreadyMemberLink = document.querySelector(".signin-image-link");
-const loginLink = document.getElementById("loginButton");
-const regLink = document.getElementById("regButton");
 
 createAccountLink.addEventListener("click", function (event) {
   event.preventDefault(); // Prevent the default link behavior
@@ -22,12 +20,3 @@ alreadyMemberLink.addEventListener("click", function (event) {
   registrationForm.classList.add("hidden");
 });
 
-loginLink.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent the default link behavior
-  window.location.href = "http://localhost:4000/dashboard";
-});
-
-regLink.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent the default link behavior
-  window.location.href = "http://localhost:4000/dashboard";
-});
