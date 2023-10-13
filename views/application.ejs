@@ -16,7 +16,7 @@
     <div class="container">
       <header>Application Form</header>
 
-      <form action="#">
+      <form action='/dashboard'>
         <div class="form first">
           <div class="details personal">
             <span class="title">Personal Details</span>
@@ -184,7 +184,7 @@
               </div>
               <div class="input-field">
                 <label>CGPA</label>
-                <input type="number" placeholder="Enter CGPA (e.g. 3.75)" required />
+                <input type="text" placeholder="Enter CGPA (e.g. 3.75)" required />
               </div>
               <div class="input-field">
                 <label>Last semester GPA</label>
@@ -209,7 +209,7 @@
                 <span class="btnText">Back</span>
               </div>
 
-              <button class="sumbit">
+              <button id = "submitButton" class="sumbit">
                 <span class="btnText">Submit</span>
                 <i class="uil uil-navigator"></i>
               </button>
@@ -354,6 +354,11 @@
           suggestionsDiv.style.display = "none";
         }
       });
+      // const submitButton = document.getElementById('submitButton');
+      //   submitButton.addEventListener('click', () => {
+      //     // Navigate to another page
+      //     window.location.href = 'http//localhost:4000/dashboard'; // Replace 'page2.html' with the desired URL
+      //   });
     </script>
   </body>
 </html>
