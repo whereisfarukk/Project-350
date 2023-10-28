@@ -10,9 +10,12 @@
       rel="stylesheet"
       href="fonts/material-icon/css/material-design-iconic-font.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./style.css" />
     <meta name="robots" content="noindex, follow" />
@@ -30,7 +33,7 @@
             </div>
             <div class="signin-form">
               <h2 class="form-title">Sign in as student</h2>
-              <form method="POST" class="register-form" id="login-form">
+              <form action="/auth/signin" method="POST" class="login-form">
                 <div class="form-group">
                   <label for="your_sid"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -64,8 +67,8 @@
                     ><span><span></span></span>Remember me</label
                   >
                 </div>
-                <div id = "loginButton" class="form-group form-button">
-                  <a class = "form-submit" href="/dashboard">Login</a>
+                <div id="loginButton" class="form-group form-button">
+                  <a class="form-submit" href="/dashboard">Login</a>
                 </div>
               </form>
               <!-- <div class="social-login">
@@ -97,7 +100,7 @@
           <div class="signup-content hidden">
             <div class="signup-form">
               <h2 class="form-title">Sign up as student</h2>
-              <form method="POST" class="register-form" id="register-form">
+              <form action="/auth/register" method="POST" class="register-form">
                 <div class="form-group">
                   <label for="first_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -130,7 +133,9 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="student_id"><i class="zmdi zmdi-student id"></i></label>
+                  <label for="student_id"
+                    ><i class="zmdi zmdi-student id"></i
+                  ></label>
                   <input
                     type="student_id"
                     name="student_id"
@@ -170,8 +175,8 @@
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
-                <div id = "regButton" class="form-group form-button">
-                  <a class = "form-submit" href="/dashboard">Register</a>
+                <div id="regButton" class="form-group form-button">
+                  <a class="form-submit" href="/dashboard">Register</a>
                 </div>
               </form>
             </div>

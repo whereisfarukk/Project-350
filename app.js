@@ -11,11 +11,14 @@ const db = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
-  port: process.env.DB_PORT
+  port: process.env.DB_PORT,
 });
 const publicDirectory = path.join(__dirname, "./public");
 app.use(express.static(publicDirectory));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 dotenv.config({ path: "./.env" });
 app.set("view engine", "ejs");
@@ -24,44 +27,23 @@ db.connect((error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log('db ' + db.state);
+    console.log("db " + db.state);
   }
 });
 
-app.get("/", (req, res) => {
-  res.render("index");
+app.use("/", require("./routes/pages"));
+// app.use("/auth", require("./routes/auth"));
+
+app.post("/login_student", (req, res) => {
+  res.send("Login successful!");
+  console.log("working");
 });
 
-app.get("/login_student", (req, res) => {
-  res.render("login_student");
-});
-
-app.get("/login_admin", (req, res) => {
-  res.render("login_admin");
-});
-
-app.get("/application", (req, res) => {
-  res.render("application");
-});
-
-app.get("/dashboard", (req, res) => {
-  res.render("dashboard");
-});
-
-app.get("/admin_dashboard", (req, res) => {
-  res.render("admin_dashboard");
-});
-
-app.post('/login_student', (req, res) => {
-  res.send('Login successful!');
-});
-
-app.post('/login_admin', (req, res) => {
-  res.send('Login successful!');
+app.post("/auth/register", (req, res) => {
+  res.send("Login successful!");
+  console.log("workings");
 });
 
 app.listen(4000, () => {
   console.log("server started on port 4000");
 });
-
-

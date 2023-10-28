@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Basic CSS for table styling */
+      table {
+        border-collapse: collapse;
+        width: 100%; /* Reduce the table width to leave space for the search box */
+        float: left; /* Float the table to the left */
+        padding: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+      input[type="text"] {
+        padding: 6px;
+        width: 100%;
+      }
+      /* CSS for the search box */
+      .search-container {
+        width: 20%; /* Set the width of the search box */
+        float: right; /* Float the search box to the left */
+        padding: 10px 15px 10px;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Payment</h1>
+
+    <div class="search-container">
+      <!-- Search Box -->
+      <input
+        type="text"
+        id="searchInput"
+        onkeyup="searchTable()"
+        placeholder="Search by ID Number"
+      />
+    </div>
+
+    <!-- Table for Transactions -->
+    <table id="transactionTable">
+      <thead>
+        <tr>
+          <th>ID Number</th>
+          <th>Transaction Time</th>
+          <th>Receipt No</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Sample data -->
+        <tr>
+          <td>12345</td>
+          <td>2023-10-14 10:30:15</td>
+          <td>ABC123</td>
+          <td>$100.00</td>
+          <td>Paid</td>
+        </tr>
+        <tr>
+          <td>67890</td>
+          <td>2023-10-14 11:15:30</td>
+          <td>XYZ456</td>
+          <td>$75.50</td>
+          <td>Due</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+
+    <script>
+      // JavaScript function for searching the table
+      function searchTable() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("transactionTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0]; // Column to search (ID Number)
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
