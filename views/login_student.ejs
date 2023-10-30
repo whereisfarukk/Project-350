@@ -32,6 +32,11 @@
               <a href="#" class="signup-image-link">Create an account</a>
             </div>
             <div class="signin-form">
+              <% if (errorMessage) { %>
+              <div class="error-message">
+                <p><%= errorMessage %></p>
+              </div>
+              <% } %>
               <h2 class="form-title">Sign in as student</h2>
               <form action="/auth/signin" method="POST" class="login-form">
                 <div class="form-group">
@@ -50,7 +55,7 @@
                   <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                   <input
                     type="password"
-                    name="your_pass"
+                    name="password"
                     id="your_pass"
                     placeholder="Password"
                     autocomplete="new-password"
@@ -67,10 +72,12 @@
                     ><span><span></span></span>Remember me</label
                   >
                 </div>
-                <div id="loginButton" class="form-group form-button">
-                  <a class="form-submit" href="/dashboard">Login</a>
+
+                <div class="form-group form-button">
+                  <input type="submit" value="Login" class="form-submit" />
                 </div>
               </form>
+
               <!-- <div class="social-login">
                 <span class="social-label">Or login with</span>
                 <ul class="socials">
@@ -147,8 +154,8 @@
                   <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                   <input
                     type="password"
-                    name="pass"
-                    id="pass"
+                    name="password"
+                    id="password"
                     placeholder="Password"
                   />
                 </div>
@@ -158,7 +165,7 @@
                   ></label>
                   <input
                     type="password"
-                    name="re_pass"
+                    name="re_password"
                     id="re_pass"
                     placeholder="Repeat your password"
                   />
@@ -175,8 +182,8 @@
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
-                <div id="regButton" class="form-group form-button">
-                  <a class="form-submit" href="/dashboard">Register</a>
+                <div class="form-group form-button">
+                  <input type="submit" value="Register" class="form-submit" />
                 </div>
               </form>
             </div>
