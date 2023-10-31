@@ -6,7 +6,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login_student", (req, res) => {
-  res.render("login_student");
+  res.render("login_student", {
+    errorMessage: null,
+  });
 });
 
 router.get("/login_admin", (req, res) => {
