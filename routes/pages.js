@@ -22,7 +22,9 @@ router.get("/application", (req, res) => {
 router.get("/dashboard", (req, res) => {
   res.render("dashboard");
 });
-
+router.get("/complain", (req, res) => {
+  res.render("complain"); // Renders the complain.ejs file
+});
 router.get("/admin_dashboard", (req, res) => {
   res.render("admin_dashboard");
 });
