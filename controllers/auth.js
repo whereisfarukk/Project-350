@@ -220,3 +220,7 @@ exports.admin_register = (req, res) => {
     }
   );
 };
+
+exports.complain = async (req, res) => {
+  console.log(req.body);
+};
