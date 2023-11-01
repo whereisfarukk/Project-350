@@ -10,7 +10,7 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT,
 });
 
-exports.signin = async (req, res) => {
+exports.student_signin = async (req, res) => {
   // console.log(req.body);
   const s_id = req.body.your_sid;
   const password = req.body.password;
@@ -54,7 +54,7 @@ exports.signin = async (req, res) => {
   );
 };
 
-exports.register = (req, res) => {
+exports.student_register = (req, res) => {
   // res.send("form submitted");
   // console.log(req.body);
   const { first_name, last_name, email, student_id, password, re_password } =
@@ -119,3 +119,104 @@ exports.register = (req, res) => {
 //   console.log("working");
 //   console.log(req.body);
 // };
+
+exports.admin_signin = async (req, res) => {
+  // console.log(req.body);
+  const admin_id = req.body.admin_id;
+  const password = req.body.password;
+  console.log(admin_id, password);
+  if (!admin_id || !password) {
+    return res.render("login", {
+      message: "You need to provide both email and password.",
+    });
+  }
+  db.query(
+    "SELECT * FROM admin WHERE admin_id = ?",
+    [admin_id],
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+      }
+      if (
+        !results ||
+        results.length === 0 ||
+        !(await bcrypt.compare(password, results[0].password))
+      ) {
+        // res.render("login", {
+        //   message: "The email or its password is incorrect",
+        // });
+        res.render("login_student", {
+          errorMessage: "Wrong user ID or password",
+        });
+      } else {
+        // const userId = results[0].s_id;
+        // const username = results[0].name;
+        // console.log(username);
+        // console.log(userId);
+        // return res.status(200).json({ userId, username });
+        console.log("found user");
+        res.redirect("/admin_dashboard");
+      }
+    }
+  );
+};
+exports.admin_register = (req, res) => {
+  // res.send("form submitted");
+  // console.log(req.body);
+  const { first_name, last_name, email, admin_id, password, re_password } =
+    req.body;
+  db.query(
+    "SELECT email FROM admin WHERE email = ?",
+    [email],
+    async (error, results) => {
+      if (error) {
+        console.log(error);
+        throw error;
+      }
+
+      if (results.length > 0) {
+        return res.render("register", {
+          message: "That email is laready in use",
+        });
+      } else if (password !== re_password) {
+        console.log("working");
+        return res.render("register", {
+          message: "password did not match",
+        });
+      }
+
+      let hashedPassword = await bcrypt.hash(password, 8);
+      console.log(hashedPassword);
+
+      db.query(
+        "INSERT INTO admin SET ? ",
+        {
+          first_name: first_name,
+          last_name: last_name,
+          email: email,
+          admin_id: admin_id,
+          password: hashedPassword,
+          re_password: re_password,
+        },
+        (error, results) => {
+          if (error) {
+            console.log(error);
+          } else {
+            // try {
+            //   const token = jwt.sign({ email: results[0].email}, 'dhsjf3423jhsdf3423df', { expiresIn: '5d' });
+            //   console.log(token);
+            // } catch (error) {
+            //   console.log(error);
+            //   // Handle the error appropriately
+            // }
+            // console.log(results);
+            // return res.render("login_student.ejs", {
+            //   // message: "user registered",
+            // });
+            res.redirect("/login_admin");
+          }
+        }
+      );
+    }
+  );
+};
