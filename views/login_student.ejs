@@ -38,7 +38,11 @@
               </div>
               <% } %>
               <h2 class="form-title">Sign in as student</h2>
-              <form action="/auth/signin" method="POST" class="login-form">
+              <form
+                action="/auth/student_signin"
+                method="POST"
+                class="login-form"
+              >
                 <div class="form-group">
                   <label for="your_sid"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -107,7 +111,11 @@
           <div class="signup-content hidden">
             <div class="signup-form">
               <h2 class="form-title">Sign up as student</h2>
-              <form action="/auth/register" method="POST" class="register-form">
+              <form
+                action="/auth/student_register"
+                method="POST"
+                class="register-form"
+              >
                 <div class="form-group">
                   <label for="first_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i

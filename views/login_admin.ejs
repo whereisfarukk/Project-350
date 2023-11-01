@@ -11,9 +11,12 @@
       href="fonts/material-icon/css/material-design-iconic-font.min.css"
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./style.css" />
     <meta name="robots" content="noindex, follow" />
@@ -31,7 +34,12 @@
             </div>
             <div class="signin-form">
               <h2 class="form-title">Admin Sign In</h2>
-              <form method="POST" class="register-form" id="login-form">
+              <form
+                action="/auth/admin_signin"
+                method="POST"
+                class="register-form"
+                id="login-form"
+              >
                 <div class="form-group">
                   <label for="name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -50,7 +58,7 @@
                   ></label>
                   <input
                     type="text"
-                    name="employee_id"
+                    name="admin_id"
                     id="employee_id"
                     placeholder="Your Admin ID"
                     autocomplete="off"
@@ -60,7 +68,7 @@
                   <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                   <input
                     type="password"
-                    name="your_pass"
+                    name="password"
                     id="your_pass"
                     placeholder="Password"
                     autocomplete="new-password"
@@ -77,8 +85,11 @@
                     ><span><span></span></span>Remember me</label
                   >
                 </div>
-                <div id = "adminLoginButton" class="form-group form-button">
-                  <a class = "form-submit" href="/admin_dashboard">Login</a>
+                <!-- <div id="adminLoginButton" class="form-group form-button">
+                  <a class="form-submit" href="/admin_dashboard">Login</a>
+                </div> -->
+                <div id="adminLoginButton" class="form-group form-button">
+                  <input type="submit" value="Login" class="form-submit" />
                 </div>
               </form>
               <!-- <div class="social-login">
@@ -110,7 +121,13 @@
           <div class="signup-content hidden">
             <div class="signup-form">
               <h2 class="form-title">Sign up</h2>
-              <form method="POST" class="register-form" id="register-form">
+              <!-- the action it will go to the routes/auth/register from here -->
+              <form
+                action="/auth/admin_register"
+                method="POST"
+                class="register-form"
+                id="register-form"
+              >
                 <div class="form-group">
                   <label for="first_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -139,7 +156,7 @@
                   ></label>
                   <input
                     type="text"
-                    name="employee_id"
+                    name="admin_id"
                     id="employee_id"
                     placeholder="Your Admin ID"
                     autocomplete="off"
@@ -158,7 +175,7 @@
                   <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                   <input
                     type="password"
-                    name="pass"
+                    name="password"
                     id="pass"
                     placeholder="Password"
                   />
@@ -169,7 +186,7 @@
                   ></label>
                   <input
                     type="password"
-                    name="re_pass"
+                    name="re_password"
                     id="re_pass"
                     placeholder="Repeat your password"
                   />
@@ -186,8 +203,11 @@
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
-                <div id = "adminRegButton" class="form-group form-button">
-                  <a class = "form-submit" href="/admin_dashboard">Register</a>
+                <!-- <div id="adminRegButton" class="form-group form-button">
+                  <a class="form-submit">Register</a>
+                </div> -->
+                <div id="adminRegButton" class="form-group form-button">
+                  <input type="submit" value="Register" class="form-submit" />
                 </div>
               </form>
             </div>
