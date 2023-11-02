@@ -25,6 +25,9 @@ router.get("/dashboard", (req, res) => {
 router.get("/complain", (req, res) => {
   res.render("complain"); // Renders the complain.ejs file
 });
+router.get("/userApplicationStatus", (req, res) => {
+  res.render("userApplicationStatus"); // Renders the complain.ejs file
+});
 router.get("/admin_dashboard", (req, res) => {
   res.render("admin_dashboard");
 });
