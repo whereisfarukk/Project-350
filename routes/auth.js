@@ -17,4 +17,6 @@ router.post("/admin_signin", authController.admin_signin);
 
 router.post("/complain", operationsController.complain);
 
+router.post("/application", operationsController.application);
+
 module.exports = router;
