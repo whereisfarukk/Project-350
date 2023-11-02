@@ -16,7 +16,7 @@
     <div class="container">
       <header>Application Form</header>
 
-      <form action='/dashboard'>
+      <form action="/auth/application" method="POST">
         <div class="form first">
           <div class="details personal">
             <span class="title">Personal Details</span>
@@ -26,6 +26,7 @@
                 <label>First Name</label>
                 <input
                   type="text"
+                  name="First_Name"
                   placeholder="Enter your first name"
                   required
                 />
@@ -34,24 +35,36 @@
                 <label>Last Name</label>
                 <input
                   type="text"
+                  name="Last_Name"
                   placeholder="Enter your last name"
                   required
                 />
               </div>
               <div class="input-field">
                 <label>Date of Birth</label>
-                <input type="date" placeholder="Enter birth date" required />
+                <input
+                  type="date"
+                  name="DOB"
+                  placeholder="Enter birth date"
+                  required
+                />
               </div>
 
               <div class="input-field">
                 <label>Email</label>
-                <input type="text" placeholder="Enter your email" required />
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
               </div>
 
               <div class="input-field">
                 <label>Mobile Number</label>
                 <input
                   type="number"
+                  name="Mobile_Number"
                   placeholder="Enter mobile number"
                   required
                 />
@@ -59,7 +72,7 @@
 
               <div class="input-field">
                 <label>Gender</label>
-                <select required>
+                <select required name="gender">
                   <option disabled selected>Select gender</option>
                   <option>Male</option>
                   <option>Female</option>
@@ -68,7 +81,7 @@
               </div>
               <div class="input-field">
                 <label>Merital status</label>
-                <select required>
+                <select required name="Merital_Status">
                   <option disabled selected>Select status</option>
                   <option>Unmarried</option>
                   <option>Married</option>
@@ -82,16 +95,31 @@
             <div class="fields">
               <div class="input-field">
                 <label>Father Name</label>
-                <input type="text" placeholder="Enter father name" required />
+                <input
+                  type="text"
+                  name="Father_Name"
+                  placeholder="Enter father name"
+                  required
+                />
               </div>
 
               <div class="input-field">
                 <label>Mother Name</label>
-                <input type="text" placeholder="Enter mother name" required />
+                <input
+                  type="text"
+                  name="Mother_Name"
+                  placeholder="Enter mother name"
+                  required
+                />
               </div>
               <div class="input-field">
                 <label>Parent phone number</label>
-                <input type="number" placeholder="parent phone number" required />
+                <input
+                  type="number"
+                  name="P_Phone_Number"
+                  placeholder="parent phone number"
+                  required
+                />
               </div>
             </div>
             <button class="nextBtn">
@@ -108,16 +136,31 @@
             <div class="fields">
               <div class="input-field">
                 <label>present Address</label>
-                <input type="text" placeholder="Present Address" required />
+                <input
+                  type="text"
+                  name="present_Address"
+                  placeholder="Present Address"
+                  required
+                />
               </div>
               <div class="input-field">
                 <label>Permanent Address</label>
-                <input type="text" placeholder="Permanent Address" required />
+                <input
+                  type="text"
+                  name="Permanent_Address"
+                  placeholder="Permanent Address"
+                  required
+                />
               </div>
 
               <div class="input-field">
                 <label>Nationality</label>
-                <input type="text" placeholder="Enter nationality" required />
+                <input
+                  type="text"
+                  name="Nationality"
+                  placeholder="Enter nationality"
+                  required
+                />
               </div>
 
               <div class="input-field">
@@ -133,11 +176,21 @@
               </div>
               <div class="input-field">
                 <label>Post Code</label>
-                <input type="number" placeholder="Enter Post Code" required />
+                <input
+                  type="number"
+                  name="Post_Code"
+                  placeholder="Enter Post Code"
+                  required
+                />
               </div>
               <div class="input-field">
                 <label>Ward Number</label>
-                <input type="number" placeholder="Enter ward number" required />
+                <input
+                  type="number"
+                  name="Ward_Number"
+                  placeholder="Enter ward number"
+                  required
+                />
               </div>
             </div>
           </div>
@@ -147,11 +200,16 @@
             <div class="fields">
               <div class="input-field">
                 <label>Student ID</label>
-                <input type="number" placeholder="Enter Student ID" required />
+                <input
+                  type="number"
+                  name="Student_ID"
+                  placeholder="Enter Student ID"
+                  required
+                />
               </div>
               <div class="input-field">
                 <label>Semester</label>
-                <select required>
+                <select required name="semester" id="semester">
                   <option disabled selected>Select semester</option>
                   <option>1/1</option>
                   <option>1/2</option>
@@ -167,7 +225,7 @@
               </div>
               <div class="input-field">
                 <label>Department</label>
-                <select required>
+                <select required name="Department">
                   <option disabled selected>Select department</option>
                   <option>SWE</option>
                   <option>CSE</option>
@@ -184,12 +242,18 @@
               </div>
               <div class="input-field">
                 <label>CGPA</label>
-                <input type="text" placeholder="Enter CGPA (e.g. 3.75)" required />
+                <input
+                  type="text"
+                  name="CGPA"
+                  placeholder="Enter CGPA (e.g. 3.75)"
+                  required
+                />
               </div>
               <div class="input-field">
                 <label>Last semester GPA</label>
                 <input
                   type="number"
+                  name="Last_semester_GPA"
                   placeholder="Enter last semester GPA (e.g. 3.75)"
                   required
                 />
@@ -198,6 +262,7 @@
                 <label>Last semester position</label>
                 <input
                   type="number"
+                  name="Last_semester_position"
                   placeholder="Enter last semester position"
                   required
                 />
@@ -208,10 +273,10 @@
                 <i class="uil uil-navigator"></i>
                 <span class="btnText">Back</span>
               </div>
-
-              <button id = "submitButton" class="sumbit">
-                <span class="btnText">Submit</span>
-                <i class="uil uil-navigator"></i>
+              <button id="submitButton" class="sumbit">
+                <!-- <input type="submit" value="Submit" class="btnText" /> -->
+                <span type="submit" class="btnText">Submit</span>
+                <!-- <i class="uil uil-navigator"></i> -->
               </button>
             </div>
           </div>
