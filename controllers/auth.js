@@ -83,7 +83,7 @@ exports.admin_signin = async (req, res) => {
   console.log(req.body);
   const {admin_id, password} = req.body;
 
-  const query = 'SELECT * FROM users WHERE admin_id = ?';
+  const query = 'SELECT * FROM admin WHERE admin_id = ?';
   db.query(query, [admin_id], (error, results) => {
     if (error) {
       res.status(500).send('error!');
@@ -108,7 +108,7 @@ exports.admin_register = (req, res) => {
   console.log(req.body);
   const { first_name, last_name, email, admin_id, password, re_password } =
     req.body;
-  const query = 'SELECT * FROM users where admin_id = ?';
+  const query = 'SELECT * FROM admin where admin_id = ?';
   db.query(query, [admin_id], (error, results) => {
     if (error) {
       res.status(500).send('error');
@@ -120,7 +120,7 @@ exports.admin_register = (req, res) => {
           res.status(500).send('error');
         } else {
           db.query(
-            "INSERT INTO users SET ? ",
+            "INSERT INTO admin SET ? ",
             {
               first_name: first_name,
               last_name: last_name,

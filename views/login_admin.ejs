@@ -38,9 +38,10 @@
                 action="/auth/admin_signin"
                 method="POST"
                 class="register-form"
-                id="login-form"
+                name="admin-login-form"
+                id="admin-login-form"
               >
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
@@ -51,7 +52,7 @@
                     placeholder="Username"
                     autocomplete="off"
                   />
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="employee_id"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -59,7 +60,7 @@
                   <input
                     type="text"
                     name="admin_id"
-                    id="employee_id"
+                    id="admin_id"
                     placeholder="Your Admin ID"
                     autocomplete="off"
                   />
@@ -88,6 +89,7 @@
                 <!-- <div id="adminLoginButton" class="form-group form-button">
                   <a class="form-submit" href="/admin_dashboard">Login</a>
                 </div> -->
+                <p id="error-message" style="color: red"></p>
                 <div id="adminLoginButton" class="form-group form-button">
                   <input type="submit" value="Login" class="form-submit" />
                 </div>
@@ -126,7 +128,8 @@
                 action="/auth/admin_register"
                 method="POST"
                 class="register-form"
-                id="register-form"
+                name="admin-signup-form"
+                id="admin-signup-form"
               >
                 <div class="form-group">
                   <label for="first_name"
@@ -151,24 +154,24 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="employee_id"
-                    ><i class="zmdi zmdi-account material-icons-name"></i
-                  ></label>
-                  <input
-                    type="text"
-                    name="admin_id"
-                    id="employee_id"
-                    placeholder="Your Admin ID"
-                    autocomplete="off"
-                  />
-                </div>
-                <div class="form-group">
                   <label for="email"><i class="zmdi zmdi-email"></i></label>
                   <input
                     type="email"
                     name="email"
                     id="email"
                     placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="employee_id"
+                    ><i class="zmdi zmdi-account material-icons-name"></i
+                  ></label>
+                  <input
+                    type="text"
+                    name="admin_id"
+                    id="admin_id"
+                    placeholder="Your Admin ID"
+                    autocomplete="off"
                   />
                 </div>
                 <div class="form-group">
@@ -206,6 +209,7 @@
                 <!-- <div id="adminRegButton" class="form-group form-button">
                   <a class="form-submit">Register</a>
                 </div> -->
+                <p id="error-message1" style="color: red"></p>
                 <div id="adminRegButton" class="form-group form-button">
                   <input type="submit" value="Register" class="form-submit" />
                 </div>
