@@ -32,25 +32,22 @@
               <a href="#" class="signup-image-link">Create an account</a>
             </div>
             <div class="signin-form">
-              <% if (errorMessage) { %>
-              <div class="error-message">
-                <p><%= errorMessage %></p>
-              </div>
-              <% } %>
               <h2 class="form-title">Sign in as student</h2>
               <form
                 action="/auth/student_signin"
                 method="POST"
                 class="login-form"
+                name="student-login-form"
+                id="student-login-form"
               >
                 <div class="form-group">
-                  <label for="your_sid"
+                  <label for="student_id"
                     ><i class="zmdi zmdi-account material-icons-name"></i
                   ></label>
                   <input
                     type="text"
-                    name="your_sid"
-                    id="your_sid"
+                    name="student_id"
+                    id="student_id"
                     placeholder="Your student ID"
                     autocomplete="off"
                   />
@@ -76,7 +73,7 @@
                     ><span><span></span></span>Remember me</label
                   >
                 </div>
-
+                <p id="error-message" style="color: red"></p>
                 <div class="form-group form-button">
                   <input type="submit" value="Login" class="form-submit" />
                 </div>
@@ -115,6 +112,8 @@
                 action="/auth/student_register"
                 method="POST"
                 class="register-form"
+                name="student-signup-form"
+                id="student-signup-form"
               >
                 <div class="form-group">
                   <label for="first_name"
@@ -190,6 +189,7 @@
                     <a href="#" class="term-service">Terms of service</a></label
                   >
                 </div>
+                <p id="error-message1" style="color: red"></p>
                 <div class="form-group form-button">
                   <input type="submit" value="Register" class="form-submit" />
                 </div>
