@@ -5,10 +5,6 @@ const operationsController = require("../controllers/userOperations");
 
 // student registration and signup process
 router.post("/student_register", authController.student_register);
-// router.post("/register", (req, res) => {
-//   // res.send("submitted");
-//   console.log("working");
-// });
 router.post("/student_signin", authController.student_signin);
 
 //admin registration and signup process

@@ -13,7 +13,7 @@ exports.student_signin = async (req, res) => {
     if (error) {
       res.status(500).send('error!');
     } else if (results.length === 0) {
-      res.status(401).send('b');
+      res.status(401).send('Not registered');
     } else {
       bcrypt.compare(password, results[0].password, (error, result) => {
         if (error) {
@@ -21,7 +21,7 @@ exports.student_signin = async (req, res) => {
         } else if (result) {
           res.status(200).send('successful!');
         } else {
-          res.status(401).send('b');
+          res.status(401).send('Incorrect password');
         }
       });
     }
@@ -38,7 +38,7 @@ exports.student_register = (req, res) => {
     if (error) {
       res.status(500).send('error');
     } else if (results.length > 0) {
-      res.status(401).send('b');
+      res.status(401).send('Already registered!');
     } else {
       bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) {
@@ -88,7 +88,7 @@ exports.admin_signin = async (req, res) => {
     if (error) {
       res.status(500).send('error!');
     } else if (results.length === 0) {
-      res.status(401).send('b');
+      res.status(401).send('Not registered');
     } else {
       bcrypt.compare(password, results[0].password, (error, result) => {
         if (error) {
@@ -96,7 +96,7 @@ exports.admin_signin = async (req, res) => {
         } else if (result) {
           res.status(200).send('successful!');
         } else {
-          res.status(401).send('b');
+          res.status(401).send('Incorrect password');
         }
       });
     }
@@ -113,7 +113,7 @@ exports.admin_register = (req, res) => {
     if (error) {
       res.status(500).send('error');
     } else if (results.length > 0) {
-      res.status(401).send('b');
+      res.status(401).send('Already registered!');
     } else {
       bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) {
