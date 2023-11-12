@@ -1,14 +1,5 @@
-const mysql = require("mysql");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const db = require("../public/dbService");
 
-const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-  port: process.env.DB_PORT,
-});
 exports.complain = async (req, res) => {
   console.log(req.body);
   const { student_id, complaint_type, message } = req.body;
@@ -42,6 +33,7 @@ exports.complain = async (req, res) => {
     }
   );
 };
+
 exports.application = async (req, res) => {
   console.log(req.body);
   const {
@@ -68,15 +60,13 @@ exports.application = async (req, res) => {
     Last_semester_GPA,
     Last_semester_position,
   } = req.body;
-  db.query(
-    "SELECT student_id FROM applications WHERE student_id = ?",
-    [Student_ID],
-    async (error, results) => {
-      if (error) {
-        console.log(error);
-        throw error;
-      }
-
+  const query = 'SELECT * FROM applications where student_id = ?';
+  db.query(query, [Student_ID], (error, results) => {
+    if (error) {
+      res.status(500).send('error');
+    } else if (results.length > 0) {
+      res.status(401).send('Already applied!');
+    } else {
       db.query(
         "INSERT INTO applications SET ? ",
         {
@@ -103,14 +93,59 @@ exports.application = async (req, res) => {
           last_semester_gpa: Last_semester_GPA,
           last_semester_position: Last_semester_position,
         },
-        (error, results) => {
-          if (error) {
-            console.log(error);
+        (e, r) => {
+          if (e) {
+            res.status(500).send('error');
           } else {
-            res.redirect("/dashboard");
+            res.status(200).send('successful!');
           }
         }
       );
     }
-  );
+  });
+  // db.query(
+  //   "SELECT student_id FROM applications WHERE student_id = ?",
+  //   [Student_ID],
+  //   async (error, results) => {
+  //     if (error) {
+  //       console.log(error);
+  //       throw error;
+  //     }
+
+  //     db.query(
+  //       "INSERT INTO applications SET ? ",
+  //       {
+  //         first_name: First_Name,
+  //         last_name: Last_Name,
+  //         date_of_birth: DOB,
+  //         email: email,
+  //         mobile_number: Mobile_Number,
+  //         gender: gender,
+  //         merital_status: Merital_Status,
+  //         father_name: Father_Name,
+  //         mother_name: Mother_Name,
+  //         parent_mobile_number: P_Phone_Number,
+  //         present_address: present_Address,
+  //         permanent_address: Permanent_Address,
+  //         nationality: Nationality,
+  //         district: district,
+  //         post_code: Post_Code,
+  //         ward_number: Ward_Number,
+  //         student_id: Student_ID,
+  //         semester: semester,
+  //         department: Department,
+  //         cgpa: CGPA,
+  //         last_semester_gpa: Last_semester_GPA,
+  //         last_semester_position: Last_semester_position,
+  //       },
+  //       (error, results) => {
+  //         if (error) {
+  //           console.log(error);
+  //         } else {
+  //           res.redirect("/dashboard");
+  //         }
+  //       }
+  //     );
+  //   }
+  // );
 };
