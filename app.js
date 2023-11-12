@@ -21,21 +21,6 @@ app.set("view engine", "ejs");
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
 
-// app.post("/login_student", (req, res) => {
-//   res.send("Login successful!");
-//   console.log("working");
-// });
-// app.post("/auth/signin", (req, res) => {
-//   const username = req.body.your_sid;
-//   const password = req.body.your_pass;
-//   console.log(username);
-// });
-
-// app.post("/auth/register", (req, res) => {
-//   res.send("Login successful!");
-//   console.log("workings");
-// });
-
 app.listen(4000, () => {
   console.log("server started on port 4000");
 });
