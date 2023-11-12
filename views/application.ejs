@@ -16,7 +16,7 @@
     <div class="container">
       <header>Application Form</header>
 
-      <form action="/auth/application" method="POST">
+      <form id = "application_form" action="/auth/application" method="POST">
         <div class="form first">
           <div class="details personal">
             <span class="title">Personal Details</span>
@@ -268,14 +268,15 @@
                 />
               </div>
             </div>
+            <p id = "error-message" style="color: red"></p>
             <div class="buttons">
               <div class="backBtn">
                 <i class="uil uil-navigator"></i>
                 <span class="btnText">Back</span>
               </div>
-              <button id="submitButton" class="sumbit">
+              <button id="submitButton" type="submit">
                 <!-- <input type="submit" value="Submit" class="btnText" /> -->
-                <span type="submit" class="btnText">Submit</span>
+                <span  class="btnText">Submit</span>
                 <!-- <i class="uil uil-navigator"></i> -->
               </button>
             </div>
@@ -449,5 +450,6 @@
       //     window.location.href = 'http//localhost:4000/dashboard'; // Replace 'page2.html' with the desired URL
       //   });
     </script>
+    <script src = "/script_application.js"></script>
   </body>
 </html>
