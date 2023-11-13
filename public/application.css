@@ -51,7 +51,7 @@ body {
 .container form {
     position: relative;
     margin-top: 16px;
-    min-height: 490px;
+    min-height: 520px;
     background-color: #fff;
     overflow: hidden;
 }
@@ -133,6 +133,46 @@ select {
 }
 
 .input-field input[type="date"]:valid {
+    color: #333;
+}
+
+form .fields .parent-input-field {
+    display: flex;
+    width: calc(100% / 4 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+.parent-input-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #2e2e2e;
+}
+
+.parent-input-field input,
+select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 42px;
+    margin: 8px 0;
+}
+
+.parent-input-field input :focus,
+.parent-input-field select:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+.parent-input-field select,
+.parent-input-field input[type="date"] {
+    color: #707070;
+}
+
+.parent-input-field input[type="date"]:valid {
     color: #333;
 }
 
