@@ -60,7 +60,6 @@ router.get("/admin_dashboard_applicants", (req, res) => {
 });
 
 router.get("/details", (req, res) => {
-  console.log(req.url, req.body, req.query);
   const query = 'SELECT * FROM applications WHERE student_id = ?';
   db.query(query, [req.query.student_id], (error, results) => {
     if (error) {
