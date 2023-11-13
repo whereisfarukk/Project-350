@@ -54,7 +54,7 @@
           <td>
             <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" />
             <span class="user-link"><%= row.first_name %> <%= row.last_name %></span>
-            <span class="user-subhead" name = "student_id" id = "student_id"><%= row.student_id %></span>
+            <span class="user-subhead"><%= row.student_id %></span>
           </td>
           <%
           function formatDate(dateString) {
@@ -74,10 +74,11 @@
             <span class="label label-default"><%= row.application_status %></span>
           </td>
           <td>
-            <a href="#" class="mail-link" onclick="showPopup()">View details</a>
+            <a href="#" class="mail-link" onclick="showPopup('<%= row.student_id%>')">View details</a>
+            <!-- <a href="#" class="mail-link" data-student_id ='<%= row.student_id%>'>View details</a> -->
             <div id="popupModal" class="modal">
               <div class="modal-content">
-                <iframe src="/details"  frameborder="0"></iframe>
+                <iframe id="iframe" frameborder="0"></iframe>
                 <button onclick="hidePopup()">Close</button>
               </div>
             </div>
@@ -94,14 +95,60 @@
     <script src = "script_application.js"></script>
     <script>
       // JavaScript to show the popup
-    function showPopup() {
+    function showPopup(student_id) {
+      const iframe = document.getElementById('iframe');
+      iframe.src = `/details?student_id=${student_id}`;
       document.getElementById('popupModal').style.display = 'flex';
+      // fetch('/auth/details', {
+      // method: 'POST',
+      // headers: {
+      //   'Content-Type': 'application/json'
+      // },
+      //   body: JSON.stringify({ student_id: student_id }),
+      // })
+      // .then(response => {
+      //   if (!response.ok) {
+      //     throw new Error('Network response was not ok');
+      //   }
+      //   return response.json();
+      // })
+      // .then(data => {
+      //   // Handle the server response
+      //   console.log(data);
+      // })
+      // .catch(error => {
+      //   console.error('There was a problem with the fetch operation:', error);
+      // });
+      console.log(student_id);
     }
 
     // JavaScript to hide the popup
     function hidePopup() {
       document.getElementById('popupModal').style.display = 'none';
     }
+
+    // Add click event listener to anchor tags within the table cells
+    // document.querySelectorAll('.mail-link').forEach(link => {
+    //   link.addEventListener('click', (event) => {
+    //     event.preventDefault(); // Prevent the default link behavior
+
+    //     const student_id = link.getAttribute('data-student_id');
+
+    //     // Make an asynchronous request to the server if needed
+    //     fetch('/auth/details', {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //       body: JSON.stringify({ student_id: student_id }),
+    //     })
+
+    //     // Load another page in the iframe
+    //     // const iframe = document.getElementById('iframe');
+    //     // iframe.src = `/details?student_id=${student_id}`;
+    //     document.getElementById('popupModal').style.display = 'flex';
+    //   });
+    // });
 
     </script>
   </body>
