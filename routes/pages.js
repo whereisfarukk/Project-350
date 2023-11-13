@@ -60,10 +60,9 @@ router.get("/admin_dashboard_applicants", (req, res) => {
 });
 
 router.get("/details", (req, res) => {
-  // const student_id = req.body.student_id;
-  // console.log(req.body);
-  const query = 'SELECT * FROM applications';
-  db.query(query, (error, results) => {
+  console.log(req.url, req.body, req.query);
+  const query = 'SELECT * FROM applications WHERE student_id = ?';
+  db.query(query, [req.query.student_id], (error, results) => {
     if (error) {
       res.status(500).send('Error fetching data from the database');
     } else {
