@@ -7,9 +7,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login_student", (req, res) => {
-  res.render("login_student", {
-    errorMessage: null,
-  });
+  res.render("login_student");
 });
 
 router.get("/login_admin", (req, res) => {
@@ -36,25 +34,51 @@ router.get("/admin_dashboard", (req, res) => {
   res.render("admin_dashboard");
 });
 
-router.get("/admin_dashboard_rejected_applicants", (req, res) => {
-  res.render("admin_dashboard_rejected_applicants");
-});
-
-router.get("/admin_dashboard_accepted_applicants", (req, res) => {
-  res.render("admin_dashboard_accepted_applicants");
-});
-
 router.get("/admin_dashboard_viewpayment", (req, res) => {
   res.render("admin_dashboard_viewpayment");
 });
 
 router.get("/admin_dashboard_applicants", (req, res) => {
-  const query = 'SELECT * FROM applications';
-  db.query(query, (error, results) => {
+  const query = 'SELECT * FROM applications WHERE application_status = ?';
+  const applicaton_status = 'pending';
+  db.query(query, [applicaton_status], (error, results) => {
     if (error) {
+      console.log(error);
       res.status(500).send('Error fetching data from the database');
+    } else if (results.length === 0) {
+      res.status(501).send('No applications to show');
     } else {
       res.render("admin_dashboard_applicants", { data: results });
+    }
+  });
+});
+
+router.get("/admin_dashboard_accepted_applicants", (req, res) => {
+  const query = 'SELECT * FROM applications WHERE application_status = ?';
+  const applicaton_status = 'accepted';
+  db.query(query, [applicaton_status], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else if (results.length === 0) {
+      res.status(501).send('No applications to show');
+    } else {
+      res.render("admin_dashboard_accepted_applicants", { data: results });
+    }
+  });
+});
+
+router.get("/admin_dashboard_rejected_applicants", (req, res) => {
+  const query = 'SELECT * FROM applications WHERE application_status = ?';
+  const applicaton_status = 'rejected';
+  db.query(query, [applicaton_status], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else if (results.length === 0) {
+      res.status(501).send('No applications to show');
+    } else {
+      res.render("admin_dashboard_rejected_applicants", { data: results });
     }
   });
 });
@@ -63,6 +87,7 @@ router.get("/details", (req, res) => {
   const query = 'SELECT * FROM applications WHERE student_id = ?';
   db.query(query, [req.query.student_id], (error, results) => {
     if (error) {
+      console.log(error);
       res.status(500).send('Error fetching data from the database');
     } else {
       res.render("details", { rowData: results[0] });

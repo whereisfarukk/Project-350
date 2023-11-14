@@ -5,7 +5,7 @@ const db = require("../public/dbService");
 const saltRounds = 10;
 
 exports.student_signin = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {student_id, password} = req.body;
 
   const query = 'SELECT * FROM users WHERE student_id = ?';
@@ -29,8 +29,7 @@ exports.student_signin = async (req, res) => {
 };
 
 exports.student_register = (req, res) => {
-  // res.send("form submitted");
-  console.log(req.body);
+  // console.log(req.body);
   const { first_name, last_name, email, student_id, password, re_password } =
     req.body;
   const query = 'SELECT * FROM users where student_id = ?';
@@ -104,11 +103,10 @@ exports.admin_signin = async (req, res) => {
 };
 
 exports.admin_register = (req, res) => {
-  // res.send("form submitted");
-  console.log(req.body);
+  // console.log(req.body);
   const { first_name, last_name, email, admin_id, password, re_password } =
     req.body;
-  const query = 'SELECT * FROM admin where admin_id = ?';
+  const query = 'SELECT * FROM admin WHERE admin_id = ?';
   db.query(query, [admin_id], (error, results) => {
     if (error) {
       res.status(500).send('error');
