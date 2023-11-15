@@ -129,6 +129,20 @@ body {
 }
 
 .reject-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 2px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.reschedule-button {
     background-color: #FFAC1C;
     color: white;
     border: none;
@@ -142,13 +156,18 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+.reschedule-button:hover {
+    background-color: #FFAC1C;
+    color: white;
+}
+
 .accept-button:hover {
     background-color: #00D100;
     color: white;
 }
 
 .reject-button:hover {
-    background-color: #FFBF00;
+    background-color: red;
     color: white;
 }
 

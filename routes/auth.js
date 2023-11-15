@@ -14,5 +14,6 @@ router.post("/admin_signin", authController.admin_signin);
 router.post("/complain", operationsController.complain);
 router.post("/application", operationsController.application);
 router.post("/assign_viva", operationsController.assign_viva);
+router.post("/assign_payment", operationsController.assign_payment);
 
 module.exports = router;

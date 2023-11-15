@@ -42,24 +42,22 @@
       height: 650px;
       border: 0;
     } */
-
-    .viva {
-      border: 0;
-    }
+    
     </style>
   </head>
   <body>
-    <h1 class="mail-link">Pending Applications</h1>
+    <h2 class="mail-link">Applicants Selected For Viva</h2>
     <br>
     <table class="user-list">
       <thead>
         <tr class="mail-link" style="white-space: pre;">
           <th><span>Applicant</span></th>
-          <th><span>Applied</span></th>
+          <!-- <th>&nbsp;</th> -->
+          <th><span>     Viva Schedule               Location</span></th>
           <th><span>Status</span></th>
-          <th><span>      Details</span></th>
-          <th><span>            Actions</span></th>
-          <th>&nbsp;</th>
+          <th><span>       Details </span></th>
+          <th><span>                      Actions </span></th>
+          <!-- <th>&nbsp;</th> -->
         </tr>
       </thead>
       <tbody>
@@ -86,9 +84,10 @@
                 return `${day}/${month}/${year}`;
               }
            %>
-          <td><%= formatDate(row.date_applied) %></td>
-
-          <td class="text-center">
+          <!-- <td><%= formatDate(row.viva_date) + ' ' + row.viva_time + "   " + row.viva_room %></td> -->
+          <td  style="white-space: pre;">  <%= `${formatDate(row.viva_date)}  ${row.viva_time} \t\t  ${row.viva_room}` %>
+          </td>
+          <td>
             <span class="label label-default"><%= row.application_status %></span>
           </td>
           <td>
@@ -96,13 +95,14 @@
             <!-- <a href="#" class="mail-link" data-student_id ='<%= row.student_id%>'>View details</a> -->
             <div id="popupModal" class="modal">
               <div class="modal-content">
-                <iframe class="details" id="iframe" frameborder="0"></iframe>
+                <iframe id="iframe" frameborder="0"></iframe>
                 <button onclick="hidePopup()">Close</button>
               </div>
             </div>
           </td>
           <td style="width: 20%">
-            <button class="accept-button" onclick="showVivaPage('<%= row.student_id%>')">Select for viva</button>
+            <button class="accept-button" onclick="showPaymentDatePage('<%= row.student_id%>')">Accept</button>
+            <button class="reschedule-button" onclick="showVivaPage('<%= row.student_id%>')">Reschedule viva</button>
             <button class="reject-button">Reject</button>
           </td>
         </tr>
@@ -129,6 +129,15 @@
       const iframe = document.getElementById('iframe');
       iframe.src = `/assign_viva?student_id=${student_id}`;
       iframe.height = 250;
+      iframe.width = 500;
+      document.getElementById('popupModal').style.display = 'flex';
+      iframe.contentWindow.postMessage({ student_id }, '*');
+    }
+
+    function showPaymentDatePage(student_id) {
+      const iframe = document.getElementById('iframe');
+      iframe.src = `/assign_payment?student_id=${student_id}`;
+      iframe.height = 210;
       iframe.width = 500;
       document.getElementById('popupModal').style.display = 'flex';
       iframe.contentWindow.postMessage({ student_id }, '*');
