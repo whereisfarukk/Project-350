@@ -63,3 +63,24 @@ exports.application = async (req, res) => {
     }
   });
 };
+
+exports.assign_viva = async (req, res) => {
+  const table = 'viva';
+  // Extract column names and values from req.body
+  const columns = Object.keys(req.body);
+  const values = Object.values(req.body);
+
+  // SQL query to insert data into the table
+  const insertQuery = `
+    INSERT INTO ${table} (${columns.join(', ')})
+    VALUES (${Array(values.length).fill('?').join(', ')})
+  `;
+   db.query(insertQuery, values, (error, results) => {
+      if (error) {
+        res.status(500).send('error');
+      } else {
+        res.status(200).send('successful!');
+      }
+    }
+  );
+};

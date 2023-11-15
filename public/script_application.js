@@ -15,12 +15,12 @@ applicationForm.addEventListener('submit', async (event) => {
       window.location.href = "/dashboard"; // Change the URL to your desired destination
     } else if (response.status === 401) {
       // User already exists
-      alert("Already applied!");
-      // const errorContainer = document.querySelector('#error-message');
-      // errorContainer.textContent = 'Already applied!';
+      // alert("Already applied!");
+      const errorContainer = document.querySelector('#error-message');
+      errorContainer.textContent = 'Already applied!';
     } else {
-      // const errorContainer = document.querySelector('#error-message');
-      // errorContainer.textContent = 'Oops, something went wrong';
-      alert('Oops, something went wrong');
+      const errorContainer = document.querySelector('#error-message');
+      errorContainer.textContent = 'Oops, something went wrong';
+      // alert('Oops, something went wrong');
     }
 });

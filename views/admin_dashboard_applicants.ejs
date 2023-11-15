@@ -30,9 +30,13 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
-      iframe {
+      /* .details {
       width: 600px;
       height: 650px;
+      border: 0;
+    } */
+
+    .viva {
       border: 0;
     }
     </style>
@@ -78,13 +82,13 @@
             <!-- <a href="#" class="mail-link" data-student_id ='<%= row.student_id%>'>View details</a> -->
             <div id="popupModal" class="modal">
               <div class="modal-content">
-                <iframe id="iframe" frameborder="0"></iframe>
+                <iframe class="details" id="iframe" frameborder="0"></iframe>
                 <button onclick="hidePopup()">Close</button>
               </div>
             </div>
           </td>
           <td style="width: 20%">
-            <button class="accept-button">Accept</button>
+            <button class="accept-button" onclick="showVivaPage('<%= row.student_id%>')">Select</button>
             <button class="reject-button">Reject</button>
           </td>
         </tr>
@@ -97,12 +101,22 @@
     function showPopup(student_id) {
       const iframe = document.getElementById('iframe');
       iframe.src = `/details?student_id=${student_id}`;
+      iframe.height = 650;
+      iframe.width = 600;
       document.getElementById('popupModal').style.display = 'flex';
     }
 
     // JavaScript to hide the popup
     function hidePopup() {
       document.getElementById('popupModal').style.display = 'none';
+    }
+
+    function showVivaPage(student_id) {
+      const iframe = document.getElementById('iframe');
+      iframe.src = `/assign_viva?student_id=${student_id}`;
+      iframe.height = 200;
+      iframe.width = 500;
+      document.getElementById('popupModal').style.display = 'flex';
     }
     </script>
   </body>

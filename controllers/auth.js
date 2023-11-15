@@ -79,7 +79,7 @@ exports.student_register = (req, res) => {
 };
 
 exports.admin_signin = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {admin_id, password} = req.body;
 
   const query = 'SELECT * FROM admin WHERE admin_id = ?';
@@ -150,9 +150,5 @@ exports.admin_register = (req, res) => {
       });
     }
   });
-};
-
-exports.complain = async (req, res) => {
-  console.log(req.body);
 };
 
