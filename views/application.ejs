@@ -50,25 +50,25 @@
                 />
               </div>
 
-              <div class="input-field">
-                <label>Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
+                <div class="input-field">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
 
-              <div class="input-field">
-                <label>Phone Number</label>
-                <input
-                  type="number"
-                  name="phone_number"
-                  placeholder="Enter your phone number"
-                  required
-                />
-              </div>
+                <div class="input-field">
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    name="phone_number"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </div>
 
               <div class="input-field">
                 <label>Nationality</label>
@@ -80,8 +80,7 @@
                 />
               </div>
 
-
-              <!-- <div class="input-field">
+              <div class="input-field">
                 <label>Gender</label>
                 <select required name="gender">
                   <option disabled selected>Select gender</option>
@@ -89,22 +88,26 @@
                   <option>Female</option>
                   <option>Others</option>
                 </select>
-              </div> -->
-              <!-- <div class="input-field">
-                <label>Merital status</label>
-                <select required name="Merital_Status">
+              </div>
+
+              <div class="input-field">
+                <label>Marital status</label>
+                <select required name="marital_status">
                   <option disabled selected>Select status</option>
                   <option>Unmarried</option>
                   <option>Married</option>
+                  <option">Divorced</option>
                 </select>
-              </div> -->
+              </div>
+
+              <div class="input-field"></div>
             </div>
           </div>
           <div class="details address">
             <span class="title">Student Permanent address</span>
 
             <div class="fields">
-              <div class="input-field">
+              <div class="parent-input-field">
                 <label for="district">District</label>
                 <input
                   type="text"
@@ -115,7 +118,7 @@
                 />
                 <div id="suggestions" class="suggestions"></div>
               </div>
-              <div class="input-field">
+              <div class="parent-input-field">
                 <label for="upazila">Upazila</label>
                 <input
                   type="text"
@@ -125,7 +128,7 @@
                   required
                 />
               </div>
-              <div class="input-field">
+              <div class="parent-input-field">
                 <label for="village">Village/Road</label>
                 <input
                   type="text"
@@ -135,13 +138,46 @@
                   required
                 />
               </div>
-              <div class="input-field">
+              <div class="parent-input-field">
                 <label for="post_code">Post Code</label>
                 <input
                   type="number"
                   id="post_code"
                   name="post_code"
                   placeholder="Enter your post code"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="details personal">
+            <span class="title">Payment Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label>Amount</label>
+                <input
+                  type="number"
+                  name="amount"
+                  placeholder="Amount(tk)"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Slip number</label>
+                <input
+                  type="text"
+                  name="slip_number"
+                  placeholder="Bank slip number"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Date of Payment</label>
+                <input
+                  type="date"
+                  name="date_of_payment"
+                  placeholder="Enter date of payment"
                   required
                 />
               </div>
@@ -316,7 +352,6 @@
                 />
               </div>
             </div>
-            <p id = "error-message" style="color: red"></p>
             <div class="buttons">
               <div class="backBtn">
                 <i class="uil uil-navigator"></i>
@@ -327,6 +362,7 @@
                 <span  class="btnText">Submit</span>
                 <!-- <i class="uil uil-navigator"></i> -->
               </button>
+              <p id = "error-message" style="color: red"></p>
             </div>
           </div>
         </div>

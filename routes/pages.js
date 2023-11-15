@@ -38,6 +38,10 @@ router.get("/admin_dashboard_viewpayment", (req, res) => {
   res.render("admin_dashboard_viewpayment");
 });
 
+router.get("/assign_viva", (req, res) => {
+  res.render("assign_viva");
+});
+
 router.get("/admin_dashboard_applicants", (req, res) => {
   const query = 'SELECT * FROM applications WHERE application_status = ?';
   const applicaton_status = 'pending';

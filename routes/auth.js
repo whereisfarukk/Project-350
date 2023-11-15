@@ -12,7 +12,7 @@ router.post("/admin_register", authController.admin_register);
 router.post("/admin_signin", authController.admin_signin);
 
 router.post("/complain", operationsController.complain);
-
 router.post("/application", operationsController.application);
+router.post("/assign_viva", operationsController.assign_viva);
 
 module.exports = router;
