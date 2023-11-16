@@ -6,7 +6,7 @@ body {
 }
 
 a {
-    color: yellowgreen;
+    color: #337ab7;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -45,6 +45,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
+    background-color: aqua;
     background-image: url('../images/header.jpg');
     background-position: center;
     -webkit-background-size: cover;
@@ -115,7 +116,7 @@ header .header-content .header-content-inner p {
 
 .intro {
 	color: #fff;
-    background-color: yellowgreen;
+    background-color: #337ab7;
     padding: 70px 0;
     text-align: center;
 }
@@ -188,7 +189,7 @@ header .header-content .header-content-inner p {
 
 .page-footer .contact {
 	padding: 100px 0;
-	background-color: yellowgreen;
+	background-color: #337ab7;
 	color: #fff;
 	}
 
@@ -214,7 +215,8 @@ header .header-content .header-content-inner p {
 
 .navbar-default {
     font-size: large;
-    -webkit-text-fill-color: yellowgreen; /* important */
+    font-weight:bold;
+    -webkit-text-fill-color: #337ab7; /* important */
     border-color: rgba(34,34,34,.05);
     background-color: #fff;
     -webkit-transition: all .35s;
@@ -223,7 +225,7 @@ header .header-content .header-content-inner p {
 }
 
 .navbar-default .navbar-header .navbar-brand {
-    color: yellowgreen;
+    color: #337ab7;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -238,12 +240,12 @@ header .header-content .header-content-inner p {
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: yellowgreen;
+    color: #337ab7;
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: yellowgreen!important;
+    color: #337ab7!important;
     background-color: transparent;
 }
 
@@ -252,7 +254,7 @@ header .header-content .header-content-inner p {
     background-color: transparent;
 }
 
-@media(min-width:768px) {
+/* @media(min-width:768px) {
     .navbar-default {
         border-color: rgba(255,255,255,.3);
         background-color: transparent;
@@ -286,7 +288,7 @@ header .header-content .header-content-inner p {
 
     .navbar-default.affix .navbar-header .navbar-brand {
         letter-spacing: 0;
-        color: yellowgreen;
+        color: #337ab7;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -301,9 +303,9 @@ header .header-content .header-content-inner p {
 
     .navbar-default.affix .nav > li>a:hover,
     .navbar-default.affix .nav>li>a:focus:hover {
-        color: yellowgreen;
+        color: #337ab7;
     }
-}
+} */
 
 .btn-default {
     border-color: #fff;
@@ -359,9 +361,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-    border-color: yellowgreen;
+    border-color: #337ab7;
     color: #fff;
-    background-color: yellowgreen;
+    background-color: #337ab7;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -402,12 +404,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: yellowgreen;
-    background-color: yellowgreen;
+    border-color: #337ab7;
+    background-color: #337ab7;
 }
 
 .btn-primary .badge {
-    color: yellowgreen;
+    color: #337ab7;
     background-color: #fff;
 }
 
@@ -445,9 +447,9 @@ img::-moz-selection {
 }
 
 .text-primary {
-    color: yellowgreen;
+    color: #337ab7;
 }
 
 .bg-primary {
-    background-color: yellowgreen;
+    background-color: #337ab7;
 }
