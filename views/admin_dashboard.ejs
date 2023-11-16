@@ -1,43 +1,93 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/admin_dash.css" />
-  </head>
-  <body>
-    <ul>
-      <!-- <li><span>Home</span></li> -->
-      <li>
-        <a href="/admin_dashboard_applicants"><span>Pending Applications</span></a>
-      </li>
-      <li>
-        <a href="/admin_dashboard_selected_applicants"><span>Selected For Viva Applications</span></a>
-      </li>
-      <li>
-        <a href="/admin_dashboard_accepted_applicants" ><span>Payment pending Applications</span></a>
-      </li>
-      <li>
-        <a href="/admin_dashboard_rejected_applicants" ><span>Rejected Applications</span></a>
-      </li>
-      <li>
-        <a href="/admin_dashboard_rejected_applicants"><span>Rejected Applications</span></a>
-      </li>
-      <li>
-        <a href="/admin_dashboard_viewpayment"><span>Student Details</span></a>
-      </li>
-      <li>
-        <a href="/admin_dashboard_viewpayment"><span>Room Details</span></a>
-      </li>
+<html lang="en">
 
-      <li>
-        <a href="/admin_dashboard_viewpayment"><span>View Payment</span></a>
-        <li>
-          <a href="/admin_dashboard_viewpayment"><span>View Complaints</span></a>
-        </li>
-        <li>
-          <a href="/admin_dashboard_viewpayment"><span>Leave Requests</span></a>
-        </li>
-      </li>
-    </ul>
-  </body>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Dashboard</title>
+
+    <link href="/bootstrap.css" rel="stylesheet">
+
+    <link href="/custom.css" rel="stylesheet">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                	<span class="glyphicon glyphicon-fire"></span> 
+                	Bangabandhu Hall, SUST
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+        
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Applications <span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="about-us">
+							<li><a href="/admin_dashboard_applicants">New applications</a></li>
+							<li><a href="#">Selected For Viva</a></li>
+							<li><a href="#">Pending Payment</a></li>
+              <li><a href="#">Accepted</a></li>
+              <li><a href="#">Rejected</a></li>
+						</ul>
+					</li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+                
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+	<!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <!-- <h1>Dramatically Engage</h1> -->
+                <!-- <p>Objectively innovate empowered manufactured products whereas parallel platforms.</p> -->
+                <a href="#" class="btn btn-primary btn-lg">Engage Now</a><br>
+                <a href="#" class="btn btn-primary btn-lg">Engage Now</a><br>
+                <a href="#" class="btn btn-primary btn-lg">Engage Now</a><br>
+                <a href="#" class="btn btn-primary btn-lg">Engage Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- jQuery -->
+    <script src="/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/jquery.easing.min.js"></script>
+    
+    <!-- Custom Javascript -->
+    <script src="/custom.js"></script>
+
+</body>
+
 </html>
+
