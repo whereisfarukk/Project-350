@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin_dashboard_applicants.css" />
+    <style>
+      /* Styling for the modal */
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+      }
+
+      .modal-content {
+        background: white;
+        padding: 20px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .label-selected {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="mail-link">Applicants Selected For Viva</h2>
+    <br />
+    <table class="user-list">
+      <thead>
+        <tr class="mail-link" style="white-space: pre">
+          <th><span>Applicant</span></th>
+          <th><span> Viva Schedule Location</span></th>
+          <th><span>Status</span></th>
+          <th><span> Details </span></th>
+          <th><span> Actions </span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!data || data.length === 0) { %>
+        <tr>
+          <td class="mail-link" colspan="6">
+            <h2>No applicants here to show</h2>
+          </td>
+        </tr>
+        <% } else { %> <% data.forEach(row => { %>
+        <tr>
+          <td>
+            <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" />
+            <span class="user-link">
+              <%= row.first_name %> <%= row.last_name %>
+            </span>
+            <span class="user-subhead"><%= row.student_id %></span>
+          </td>
+          <% function formatDate(dateString) { const date = new
+          Date(dateString); const day = date.getDate().toString().padStart(2,
+          '0'); const month = (date.getMonth() + 1).toString().padStart(2, '0');
+          const year = date.getFullYear().toString().slice(-2); return
+          `${day}/${month}/${year}`; } %>
+          <td style="white-space: pre">
+            <%= `${formatDate(row.viva_date)} ${row.viva_time}
+            \t\t${row.viva_room}` %>
+          </td>
+          <td>
+            <span class="label label-selected"
+              ><%= row.application_status %></span
+            >
+          </td>
+          <td>
+            <button
+              class="user-link"
+              onclick="showPopup('<%= row.student_id%>')"
+            >
+              View details
+            </button>
+            <div id="popupModal" class="modal">
+              <div class="modal-content">
+                <iframe id="iframe" frameborder="0"></iframe>
+                <button onclick="hidePopup()">Close</button>
+              </div>
+            </div>
+          </td>
+          <td style="width: 20%">
+            <button
+              class="accept-button"
+              onclick="showPaymentDatePage('<%= row.student_id%>')"
+            >
+              Accept
+            </button>
+            <button
+              class="reschedule-button"
+              onclick="showVivaPage('<%= row.student_id%>')"
+            >
+              Reschedule viva
+            </button>
+            <button class="reject-button">Reject</button>
+          </td>
+        </tr>
+        <% }); %> <% } %>
+      </tbody>
+    </table>
+    <script>
+      // JavaScript to show the popup
+      function showPopup(student_id) {
+        const iframe = document.getElementById("iframe");
+        iframe.src = `/details?student_id=${student_id}`;
+        iframe.height = 650;
+        iframe.width = 600;
+        document.getElementById("popupModal").style.display = "flex";
+      }
+
+      // JavaScript to hide the popup
+      function hidePopup() {
+        document.getElementById("popupModal").style.display = "none";
+      }
+
+      function showVivaPage(student_id) {
+        const iframe = document.getElementById("iframe");
+        iframe.src = `/assign_viva?student_id=${student_id}`;
+        iframe.height = 250;
+        iframe.width = 500;
+        document.getElementById("popupModal").style.display = "flex";
+        iframe.contentWindow.postMessage({ student_id }, "*");
+      }
+
+      function showPaymentDatePage(student_id) {
+        const iframe = document.getElementById("iframe");
+        iframe.src = `/assign_payment?student_id=${student_id}`;
+        iframe.height = 210;
+        iframe.width = 500;
+        document.getElementById("popupModal").style.display = "flex";
+        iframe.contentWindow.postMessage({ student_id }, "*");
+      }
+    </script>
+  </body>
+</html>

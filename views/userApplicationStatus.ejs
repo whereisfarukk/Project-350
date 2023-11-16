@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button {
+        --y: -25;
+        --x: 0;
+        --rotation: 0;
+        --speed: 2;
+        --txt: "PENDING...";
+        --padding: 1rem 1.25rem;
+        cursor: pointer;
+        padding: var(--padding);
+        color: transparent;
+        font-weight: bold;
+        font-size: 1.25rem;
+        transition: background 0.1s ease;
+        background: orange;
+        outline-color: hsl(0, 100%, 80%);
+        animation-name: flow-and-shake;
+        animation-duration: calc(var(--speed) * 1s);
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+
+      .button:after {
+        content: var(--txt);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: var(--padding);
+        color: #fff;
+      }
+
+      .button__wrap {
+        position: relative;
+      }
+
+      .button__shadow {
+        position: absolute;
+        border-radius: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: hsl(0, 10%, 65%);
+        animation: shadow 2s infinite ease-in-out;
+        z-index: -1;
+      }
+
+      @keyframes shadow {
+        0%,
+        100% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.2;
+          transform: scaleX(0.25);
+        }
+      }
+
+      @keyframes flow-and-shake {
+        0%,
+        100% {
+          transform: translate(calc(var(--x) * -1%), 0)
+            rotate(calc(var(--rotation) * -1deg));
+        }
+        50% {
+          transform: translate(calc(var(--x) * 1%), calc(var(--y) * 1%))
+            rotate(calc(var(--rotation) * 1deg));
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="button__wrap">
+      <button class="button" style="--hue: calc(Math.random() * 360)">
+        Show me attention
+      </button>
+      <div class="button__shadow"></div>
+    </div>
+  </body>
+</html>

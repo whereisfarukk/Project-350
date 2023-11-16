@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/application.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <title>Responsive Regisration Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>Application Form</header>
+
+      <form id = "application_form" action="/auth/application" method="POST">
+        <div class="form first">
+          <div class="details personal">
+            <span class="title">Personal Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  name="first_name"
+                  placeholder="Enter your first name"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="last_name"
+                  placeholder="Enter your last name"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Date of Birth</label>
+                <input
+                  type="date"
+                  name="date_of_birth"
+                  placeholder="Enter birth date"
+                  required
+                />
+              </div>
+
+                <div class="input-field">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+
+                <div class="input-field">
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    name="phone_number"
+                    placeholder="Enter your phone number"
+                    required
+                  />
+                </div>
+
+              <div class="input-field">
+                <label>Nationality</label>
+                <input
+                  type="text"
+                  name="nationality"
+                  placeholder="Enter your nationality"
+                  required
+                />
+              </div>
+
+              <div class="input-field">
+                <label>Gender</label>
+                <select required name="gender">
+                  <option disabled selected>Select gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Others</option>
+                </select>
+              </div>
+
+              <div class="input-field">
+                <label>Marital status</label>
+                <select required name="marital_status">
+                  <option disabled selected>Select status</option>
+                  <option>Unmarried</option>
+                  <option>Married</option>
+                  <option">Divorced</option>
+                </select>
+              </div>
+
+              <div class="input-field"></div>
+            </div>
+          </div>
+          <div class="details address">
+            <span class="title">Student Permanent address</span>
+
+            <div class="fields">
+              <div class="parent-input-field">
+                <label for="district">District</label>
+                <input
+                  type="text"
+                  id="district"
+                  name="district"
+                  placeholder="Enter your district"
+                  required
+                />
+                <div id="suggestions" class="suggestions"></div>
+              </div>
+              <div class="parent-input-field">
+                <label for="upazila">Upazila</label>
+                <input
+                  type="text"
+                  id="upazila"
+                  name="upazila"
+                  placeholder="Enter your upazila"
+                  required
+                />
+              </div>
+              <div class="parent-input-field">
+                <label for="village">Village/Road</label>
+                <input
+                  type="text"
+                  id="village"
+                  name="village"
+                  placeholder="Enter your village/road"
+                  required
+                />
+              </div>
+              <div class="parent-input-field">
+                <label for="post_code">Post Code</label>
+                <input
+                  type="number"
+                  id="post_code"
+                  name="post_code"
+                  placeholder="Enter your post code"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div class="details personal">
+            <span class="title">Payment Details</span>
+
+            <div class="fields">
+              <div class="input-field">
+                <label>Amount</label>
+                <input
+                  type="number"
+                  name="amount"
+                  placeholder="Amount(tk)"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Slip number</label>
+                <input
+                  type="text"
+                  name="slip_number"
+                  placeholder="Bank slip number"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Date of Payment</label>
+                <input
+                  type="date"
+                  name="date_of_payment"
+                  placeholder="Enter date of payment"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <button class="nextBtn">
+            <span class="btnText">Next</span>
+            <i class="uil uil-navigator"></i>
+          </button>
+        </div>
+
+        <div class="form second">
+          <div class="details family">
+            <span class="title">Family Details</span>
+            <div class="fields">
+              <div class="input-field">
+                <label>Father Name</label>
+                <input
+                  type="text"
+                  name="father_name"
+                  placeholder="Enter your father name"
+                  required
+                />
+              </div>
+
+              <div class="input-field">
+                <label>Mother Name</label>
+                <input
+                  type="text"
+                  name="mother_name"
+                  placeholder="Enter your mother name"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Parent phone number</label>
+                <input
+                  type="text"
+                  name="parent_phone_number"
+                  placeholder="Parent phone number"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="details address">
+            <span class="title">Father/Guardian Permanent address</span>
+
+            <div class="fields">
+              <div class="parent-input-field">
+                <label for="district">District</label>
+                <input
+                  type="text"
+                  id="parent_district"
+                  name="parent_district"
+                  placeholder="District"
+                  required
+                />
+                <div id="suggestions" class="suggestions"></div>
+              </div>
+              <div class="parent-input-field">
+                <label for="upazila">Upazila</label>
+                <input
+                  type="text"
+                  id="parent_upazila"
+                  name="parent_upazila"
+                  placeholder="Upazila"
+                  required
+                />
+              </div>
+              <div class="parent-input-field">
+                <label for="village">Village/Road</label>
+                <input
+                  type="text"
+                  id="parent_village"
+                  name="parent_village"
+                  placeholder="village/road"
+                  required
+                />
+              </div>
+              <div class="parent-input-field">
+                <label for="post_code">Post Code</label>
+                <input
+                  type="number"
+                  id="parent_post_code"
+                  name="parent_post_code"
+                  placeholder="post code"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div class="details ID">
+            <span class="title">Academic Details</span>
+            <div class="fields">
+              <div class="input-field">
+                <label>Student ID</label>
+                <input
+                  type="number"
+                  name="student_id"
+                  placeholder="Enter Student ID"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Department</label>
+                <select required name="department">
+                  <option disabled selected>Select department</option>
+                  <option>SWE</option>
+                  <option>CSE</option>
+                  <option>PAD</option>
+                  <option>CHE</option>
+                  <option>PHY</option>
+                  <option>GEB</option>
+                  <option>EEE</option>
+                  <option>SOC</option>
+                  <option>BAN</option>
+                  <option>ENG</option>
+                  <option>CEE</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label>Semester</label>
+                <select required name="semester" id="semester">
+                  <option disabled selected>Select semester</option>
+                  <option>1/1</option>
+                  <option>1/2</option>
+                  <option>2/1</option>
+                  <option>2/2</option>
+                  <option>3/1</option>
+                  <option>3/2</option>
+                  <option>4/1</option>
+                  <option>4/2</option>
+                  <option>M/1</option>
+                  <option>M/2</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label>Session</label>
+                <select required name="session">
+                  <option disabled selected>Select session</option>
+                  <option>2015-16</option>
+                  <option>2016-17</option>
+                  <option>2017-18</option>
+                  <option>2018-19</option>
+                  <option>2019-20</option>
+                  <option>2020-21</option>
+                  <option>2021-22</option>
+                  <option>2022-23</option>
+                  <option>2023-24</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label>CGPA(4.00 for 1st semester)</label>
+                <input
+                  value="4.00"
+                  type="text"
+                  name="cgpa"
+                  placeholder="Enter CGPA (e.g. 3.75)"
+                  required
+                />
+              </div>
+              <div class="input-field">
+                <label>Merit Position</label>
+                <input
+                  type="number"
+                  name="merit_position"
+                  placeholder="Enter merit position"
+                  required
+                />
+              </div>
+            </div>
+            <div class="buttons">
+              <div class="backBtn">
+                <i class="uil uil-navigator"></i>
+                <span class="btnText">Back</span>
+              </div>
+              <button id="submitButton" type="submit">
+                <!-- <input type="submit" value="Submit" class="btnText" /> -->
+                <span  class="btnText">Submit</span>
+                <!-- <i class="uil uil-navigator"></i> -->
+              </button>
+              <p id = "error-message" style="color: red"></p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // const form = document.querySelector("form"),
+      //   nextBtn = form.querySelector(".nextBtn"),
+      //   backBtn = form.querySelector(".backBtn"),
+      //   allInput = form.querySelectorAll(".first input");
+
+      // nextBtn.addEventListener("click", () => {
+      //   allInput.forEach((input) => {
+      //     if (input.value != "") {
+      //       form.classList.add("secActive");
+      //     } else {
+      //       form.classList.remove("secActive");
+      //     }
+      //   });
+      // });
+
+      // backBtn.addEventListener("click", () =>
+      //   form.classList.remove("secActive")
+      // );
+
+      const form = document.querySelector("form"),
+        nextBtn = form.querySelector(".nextBtn"),
+        backBtn = form.querySelector(".backBtn"),
+        allInput = form.querySelectorAll(".first input");
+
+      nextBtn.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent form submission
+
+        // Check if all inputs in the first page are filled
+        const isAllFilled = Array.from(allInput).every(
+          (input) => input.value.trim() !== ""
+        );
+
+        if (isAllFilled) {
+          form.classList.add("secActive");
+        } else {
+          // form.classList.remove("secActive");
+          alert("Please fill out all the required fields before proceeding.");
+        }
+      });
+
+      backBtn.addEventListener("click", () => {
+        form.classList.remove("secActive");
+      });
+      const districtNames = [
+        "Bagerhat",
+        "Bandarban",
+        "Barguna",
+        "Barisal",
+        "Bhola",
+        "Bogra",
+        "Brahmanbaria",
+        "Chandpur",
+        "Chapainawabganj",
+        "Chittagong (Chattogram)",
+        "Chuadanga",
+        "Comilla (Cumilla)",
+        "Cox's Bazar",
+        "Dhaka",
+        "Dinajpur",
+        "Faridpur",
+        "Feni",
+        "Gaibandha",
+        "Gazipur",
+        "Gopalganj",
+        "Habiganj",
+        "Jamalpur",
+        "Jashore (Jessore)",
+        "Jhalokati",
+        "Jhenaidah",
+        "Joypurhat",
+        "Khagrachari",
+        "Khulna",
+        "Kishoreganj",
+        "Kushtia",
+        "Lakshmipur",
+        "Lalmonirhat",
+        "Madaripur",
+        "Magura",
+        "Manikganj",
+        "Meherpur",
+        "Moulvibazar",
+        "Munshiganj",
+        "Mymensingh",
+        "Naogaon",
+        "Narail",
+        "Narayanganj",
+        "Narsingdi",
+        "Natore",
+        "Netrokona",
+        "Nilphamari",
+        "Noakhali",
+        "Pabna",
+        "Panchagarh",
+        "Patuakhali",
+        "Pirojpur",
+        "Rajbari",
+        "Rajshahi",
+        "Rangamati",
+        "Rangpur",
+        "Satkhira",
+        "Shariatpur",
+        "Sherpur",
+        "Sirajganj",
+        "Sunamganj",
+        "Sylhet",
+        "Tangail",
+        "Thakurgaon",
+        "Narail",
+      ];
+
+      const inputField = document.getElementById("district");
+      const suggestionsDiv = document.getElementById("suggestions");
+
+      inputField.addEventListener("input", showSuggestions);
+
+      function showSuggestions() {
+        const inputValue = inputField.value.toLowerCase(); // Get the input value in lowercase
+
+        // Clear previous suggestions
+        suggestionsDiv.innerHTML = "";
+
+        if (!inputValue) {
+          // If the input is empty, hide the suggestions
+          suggestionsDiv.style.display = "none";
+          return;
+        }
+
+        // Filter district names that start with the input value
+        const matchingDistricts = districtNames.filter((district) =>
+          district.toLowerCase().startsWith(inputValue)
+        );
+
+        // Display matching suggestions
+        matchingDistricts.forEach((district) => {
+          const suggestion = document.createElement("div");
+          suggestion.textContent = district;
+          suggestion.className = "suggestion";
+          suggestion.addEventListener("click", () => {
+            inputField.value = district;
+            suggestionsDiv.style.display = "none";
+          });
+          suggestionsDiv.appendChild(suggestion);
+        });
+
+        // Show suggestions div if there are matching districts
+        if (matchingDistricts.length > 0) {
+          suggestionsDiv.style.display = "block";
+        } else {
+          suggestionsDiv.style.display = "none";
+        }
+      }
+
+      // Close suggestions when clicking outside the input field
+      document.addEventListener("click", (e) => {
+        if (e.target !== inputField) {
+          suggestionsDiv.style.display = "none";
+        }
+      });
+      // const submitButton = document.getElementById('submitButton');
+      //   submitButton.addEventListener('click', () => {
+      //     // Navigate to another page
+      //     window.location.href = 'http//localhost:4000/dashboard'; // Replace 'page2.html' with the desired URL
+      //   });
+    </script>
+    <script src = "/script_application.js"></script>
+  </body>
+</html>

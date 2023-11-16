@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <title>Assign viva schedule</title>
+    <style>
+      body {
+        font-family: 'Arial', 'Helvetica', 'sans-serif';
+      }
+
+      .form-row {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
+      }
+
+      .form-row label {
+          flex: 1 1 100px; /* Adjust label width */
+          margin-right: 10px;
+      }
+
+      .form-row input {
+          flex: 1 1 calc(60%); /* Adjust input width */
+          padding: 8px;
+          margin-right: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      .centered-heading {
+        text-align: center;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div>
+      <h3 class="centered-heading">Assign Payment Date and Amount</h3>
+    </div>
+    <form id = "viva_form" action="/auth/assign_payment" method="POST">
+      <div class="form-row">
+        <label for="student_id">Student ID</label>
+        <input type="text" id="student_id" name="student_id" value="<%= data.student_id%>" readonly>
+
+        <label for="ad_fee_payment_date">Payment Date</label>
+        <input type="date" id="ad_fee_payment_date" name="ad_fee_payment_date" required>
+
+        <label for="ad_fee_amount">Payment Amount (tk)</label>
+        <input type="number" id="ad_fee_amount" name="ad_fee_amount" value="2000" required>
+
+        <input type="submit" value="Submit">
+    </div>    
+    </form>
+  </body>
+</html>
