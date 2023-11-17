@@ -103,7 +103,7 @@
           <td style="width: 20%">
             <button class="accept-button" onclick="showPaymentDatePage('<%= row.student_id%>')">Accept</button>
             <button class="reschedule-button" onclick="showVivaPage('<%= row.student_id%>')">Reschedule viva</button>
-            <button class="reject-button">Reject</button>
+            <button class="reject-button" onclick="rejectApplication('<%= row.student_id %>')">Reject</button>
           </td>
         </tr>
         <!-- Add more rows as needed -->
@@ -141,6 +141,26 @@
       iframe.width = 500;
       document.getElementById('popupModal').style.display = 'flex';
       iframe.contentWindow.postMessage({ student_id }, '*');
+    }
+
+    function rejectApplication(student_id) {
+      fetch('/auth/reject_application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ student_id: student_id })
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          console.error('Failed to update status');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
     }
     </script>
   </body>

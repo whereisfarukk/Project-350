@@ -32,7 +32,7 @@ exports.complain = async (req, res) => {
       );
     }
   );
-};
+}
 
 exports.application = async (req, res) => {
   const query = 'SELECT * FROM applications where student_id = ?';
@@ -61,7 +61,7 @@ exports.application = async (req, res) => {
       });
     }
   });
-};
+}
 
 exports.assign_viva = async (req, res) => {
   const table = 'viva';
@@ -111,12 +111,20 @@ exports.assign_viva = async (req, res) => {
           res.status(500).send('error');
         } else {
           console.log('updated viva schedule');
-          res.status(201).send('successfully updated!');
+          const updateQuery = 'UPDATE applications SET application_status = ? WHERE student_id = ?'
+          db.query(updateQuery, ['selected', req.body.student_id], (e1, r1) => {
+            if (e1) {
+              console.log(e1);
+              res.status(500).send('error');
+            } else {
+              res.status(200).send('successful');
+            }
+          });
         }
       });
     }
   });
-};
+}
 
 exports.assign_payment = async (req, res) => {
   const table = 'admission_fee';
@@ -144,5 +152,101 @@ exports.assign_payment = async (req, res) => {
       });
     }
   });
-};
+}
 
+exports.assign_room = async (req, res) => {
+  // console.log(req.body);
+  // const query = `
+  // SELECT *,  amount, slip_number, date_of_payment, , application_status
+  // FROM applications
+  // WHERE student_id = ?
+  // `
+  // const query = `
+  // DROP TABLE IF EXISTS temp_tb; 
+  // CREATE TABLE temp_tb AS (
+  //   SELECT * FROM applications WHERE student_id = ?
+  // );  
+  // ALTER TABLE temp_tb DROP COLUMN amount;
+  // ALTER TABLE temp_tb DROP COLUMN slip_number;
+  // ALTER TABLE temp_tb DROP COLUMN date_of_payment;
+  // ALTER TABLE temp_tb DROP COLUMN date_applied;
+  // ALTER TABLE temp_tb DROP COLUMN application_status;
+  // SELECT * FROM temp_tb;
+  // `
+  // const query = `
+  // SELECT * FROM applications
+  // EXCEPT(SELECT amount, slip_number, date_of_payment, date_applied, application_status
+  // FROM applications);
+  // `
+
+  const query = `
+  SELECT student_id, first_name, last_name, department, semester, session, cgpa,
+  merit_position, date_of_birth, email, phone_number, nationality, district, gender,
+  marital_status, upazila, village, post_code, father_name, mother_name, parent_phone_number,
+  parent_district, parent_upazila, parent_village, parent_post_code
+  FROM applications WHERE student_id = ?
+  `
+  db.query(query, [req.body.student_id], (error, student_data) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('error');
+    } else {
+      console.log(student_data);
+      const table = 'student';
+      const columns = Object.keys(student_data[0]);
+      const values = Object.values(student_data[0]);
+      columns.push('room_id');
+      values.push(req.body.room_id);
+      console.log(columns);
+      console.log(values);
+      const insertQuery = `
+      INSERT INTO ${table} (${columns.join(', ')})
+      VALUES (${Array(values.length).fill('?').join(', ')})
+    `;
+      db.query(insertQuery, values, (err_insert, res_insert) => {
+        if (err_insert) {
+          console.log(err_insert);
+          res.status(500).send('error');
+        } else {
+          const updateQuery = 'UPDATE applications SET application_status = ? WHERE student_id = ?'
+          db.query(updateQuery, ['admitted', req.body.student_id], (err_update, res_update) => {
+            if (err_update) {
+              console.log(err_update);
+              res.status(500).send('error');
+            } else {
+              const payment_insert_query = `
+              INSERT INTO payment
+              (payslip_number, student_id, amount, payment_date, payment_type)
+              VALUES (?, ?, ?, ?, ?)
+              `
+              const {ad_fee_slip_number, student_id, ad_fee_amount, ad_fee_payment_date} = req.body;
+              const payment_type = 'admission_fee'; 
+              const payment_values = [ad_fee_slip_number, student_id, ad_fee_amount, ad_fee_payment_date, payment_type];
+              db.query(payment_insert_query, payment_values, (err_payment, res_payment) => {
+                if (err_payment) {
+                  console.log(err_payment);
+                  res.status(500).send('error');
+                } else {
+                  res.status(200).send('successful');
+                }
+              });
+            }
+          });
+        }
+      });
+    }
+  })
+}
+
+
+exports.reject_application = async (req, res) => {
+  const query = 'UPDATE applications SET application_status = ? WHERE student_id = ?';
+  db.query(query, ['rejected', req.body.student_id], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('error');
+    } else {
+      res.status(200).send('successful');
+    }
+  })
+}

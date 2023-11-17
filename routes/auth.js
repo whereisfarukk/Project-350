@@ -15,5 +15,7 @@ router.post("/complain", operationsController.complain);
 router.post("/application", operationsController.application);
 router.post("/assign_viva", operationsController.assign_viva);
 router.post("/assign_payment", operationsController.assign_payment);
+router.post("/assign_room", operationsController.assign_room);
+router.post("/reject_application", operationsController.reject_application);
 
 module.exports = router;
