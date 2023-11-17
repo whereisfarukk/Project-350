@@ -42,22 +42,24 @@
       height: 650px;
       border: 0;
     } */
-    
+
+    .viva {
+      border: 0;
+    }
     </style>
   </head>
   <body>
-    <h2 class="mail-link">Viva Accepted / Payment Pending Applicants</h2>
+    <h2 class="mail-link">Admitted Applicants</h2>
     <br>
     <table class="user-list">
       <thead>
         <tr class="mail-link" style="white-space: pre;">
           <th><span>Applicant</span></th>
-          <!-- <th>&nbsp;</th> -->
-          <th><span>     Last Date Of Payment             Amount(tk)</span></th>
+          <th><span>Date Applied</span></th>
           <th><span>  Status</span></th>
-          <th><span>       Details </span></th>
-          <th><span>                Actions </span></th>
-          <!-- <th>&nbsp;</th> -->
+          <th><span>      Details</span></th>
+          <th><span>  Actions</span></th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -84,10 +86,9 @@
                 return `${day}/${month}/${year}`;
               }
            %>
-          <!-- <td><%= formatDate(row.viva_date) + ' ' + row.viva_time + "   " + row.viva_room %></td> -->
-          <td  style="white-space: pre;">  <%= `\t\t${formatDate(row.ad_fee_payment_date)} \t\t\t\t\t${row.ad_fee_amount}` %>
-          </td>
-          <td>
+          <td><%= formatDate(row.date_applied) %></td>
+
+          <td class="text-center">
             <span class="label label-default"><%= row.application_status %></span>
           </td>
           <td>
@@ -95,15 +96,14 @@
             <!-- <a href="#" class="mail-link" data-student_id ='<%= row.student_id%>'>View details</a> -->
             <div id="popupModal" class="modal">
               <div class="modal-content">
-                <iframe id="iframe" frameborder="0"></iframe>
+                <iframe class="details" id="iframe" frameborder="0"></iframe>
                 <button onclick="hidePopup()">Close</button>
               </div>
             </div>
           </td>
           <td style="width: 20%">
-            <button class="accept-button" onclick="showAssignRoomPage('<%= row.student_id%>')">Assign Room</button>
-            <!-- <button class="reschedule-button" onclick="showVivaPage('<%= row.student_id%>')">Reschedule viva</button> -->
-            <button class="reject-button" onclick="rejectApplication('<%= row.student_id %>')">Reject</button>
+            <!-- <button class="accept-button" onclick="showVivaPage('<%= row.student_id%>')">Select for viva</button> -->
+            <button class="reject-button">Delete</button>
           </td>
         </tr>
         <!-- Add more rows as needed -->
@@ -125,33 +125,13 @@
       document.getElementById('popupModal').style.display = 'none';
     }
 
-    function showAssignRoomPage(student_id) {
+    function showVivaPage(student_id) {
       const iframe = document.getElementById('iframe');
-      iframe.src = `/assign_room?student_id=${student_id}`;
-      iframe.height = 700;
-      iframe.width = 600;
+      iframe.src = `/assign_viva?student_id=${student_id}`;
+      iframe.height = 250;
+      iframe.width = 500;
       document.getElementById('popupModal').style.display = 'flex';
       iframe.contentWindow.postMessage({ student_id }, '*');
-    }
-
-    function rejectApplication(student_id) {
-      fetch('/auth/reject_application', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ student_id: student_id })
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.reload();
-        } else {
-          console.error('Failed to update status');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
     }
     </script>
   </body>

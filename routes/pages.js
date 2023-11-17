@@ -47,6 +47,24 @@ router.get("/assign_payment", (req, res) => {
   res.render("assign_payment", {data: req.query});
 });
 
+router.get("/assign_room", (req, res) => {
+  const query = 'SELECT * FROM room WHERE occupancy_status < ?';
+  db.query(query, [4], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else {
+      // const combinedData = {
+      //   queryParameters: req.query,
+      //   fetchedData: results // Assuming 'results' holds the fetched data
+      // };
+      const data = results;
+      const student_id = req.query.student_id;
+      res.render("assign_room", { data, student_id });
+    }
+  });
+});
+
 router.get("/admin_dashboard_applicants", (req, res) => {
   const query = 'SELECT * FROM applications WHERE application_status = ?';
   const applicaton_status = 'pending';
@@ -113,6 +131,19 @@ router.get("/admin_dashboard_rejected_applicants", (req, res) => {
   });
 });
 
+router.get("/admin_dashboard_admitted_applicants", (req, res) => {
+  const query = 'SELECT * FROM applications WHERE application_status = ?';
+  const applicaton_status = 'admitted';
+  db.query(query, [applicaton_status], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else {
+      res.render("admin_dashboard_admitted_applicants", { data: results });
+    }
+  });
+});
+
 router.get("/details", (req, res) => {
   const query = 'SELECT * FROM applications WHERE student_id = ?';
   db.query(query, [req.query.student_id], (error, results) => {
@@ -121,6 +152,18 @@ router.get("/details", (req, res) => {
       res.status(500).send('Error fetching data from the database');
     } else {
       res.render("details", { rowData: results[0] });
+    }
+  });
+});
+
+router.get("/room_details", (req, res) => {
+  const query = 'SELECT * FROM room WHERE occupancy_status < ?';
+  db.query(query, [4], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else {
+      res.render("room_details", { data: results });
     }
   });
 });

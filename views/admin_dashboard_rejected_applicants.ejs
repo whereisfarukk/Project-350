@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="/admin_dashboard_applicants.css" />
     <style>
       /* Styling for the modal */
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+      }
       .modal {
         display: none;
         position: fixed;
@@ -30,25 +37,36 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
-      iframe {
+      /* .details {
       width: 600px;
       height: 650px;
+      border: 0;
+    } */
+
+    .viva {
       border: 0;
     }
     </style>
   </head>
   <body>
+    <h2 class="mail-link">Rejected Applicants</h2>
+    <br>
     <table class="user-list">
-      <!-- <thead>
-        <tr>
-          <th><span>Applicants</span></th>
-          <th><span>Created</span></th>
-          <th class="text-center"><span>Status</span></th>
-          <th><span>Email</span></th>
+      <thead>
+        <tr class="mail-link" style="white-space: pre;">
+          <th><span>Applicant</span></th>
+          <th><span>Date Applied</span></th>
+          <th><span>  Status</span></th>
+          <th><span>      Details</span></th>
+          <th><span>  Actions</span></th>
           <th>&nbsp;</th>
         </tr>
-      </thead> -->
+      </thead>
       <tbody>
+        <% if (!data || data.length === 0) { %>
+          <td class="mail-link" colspan="6"><h2>No applicants here to show</h2></td>
+        <% } else { %>
+        <% } %>
         <% data.forEach(row => { %>
         <tr>
           <td>
@@ -74,16 +92,17 @@
             <span class="label label-default"><%= row.application_status %></span>
           </td>
           <td>
-            <a href="#" class="mail-link" onclick="showPopup('<%= row.student_id%>')">View details</a>
+            <button class="user-link" onclick="showPopup('<%= row.student_id%>')">View details</button>
             <!-- <a href="#" class="mail-link" data-student_id ='<%= row.student_id%>'>View details</a> -->
             <div id="popupModal" class="modal">
               <div class="modal-content">
-                <iframe id="iframe" frameborder="0"></iframe>
+                <iframe class="details" id="iframe" frameborder="0"></iframe>
                 <button onclick="hidePopup()">Close</button>
               </div>
             </div>
           </td>
           <td style="width: 20%">
+            <button class="accept-button" onclick="showVivaPage('<%= row.student_id%>')">Select for viva</button>
             <button class="reject-button">Delete</button>
           </td>
         </tr>
@@ -96,12 +115,23 @@
     function showPopup(student_id) {
       const iframe = document.getElementById('iframe');
       iframe.src = `/details?student_id=${student_id}`;
+      iframe.height = 650;
+      iframe.width = 600;
       document.getElementById('popupModal').style.display = 'flex';
     }
 
     // JavaScript to hide the popup
     function hidePopup() {
       document.getElementById('popupModal').style.display = 'none';
+    }
+
+    function showVivaPage(student_id) {
+      const iframe = document.getElementById('iframe');
+      iframe.src = `/assign_viva?student_id=${student_id}`;
+      iframe.height = 250;
+      iframe.width = 500;
+      document.getElementById('popupModal').style.display = 'flex';
+      iframe.contentWindow.postMessage({ student_id }, '*');
     }
     </script>
   </body>
