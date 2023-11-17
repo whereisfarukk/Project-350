@@ -15,6 +15,7 @@ body {
     border-bottom: 1px solid #c2c2c2;
     padding-bottom: 0;
     text-align: left;
+    font-size: 20px;
 
 }
 
@@ -27,6 +28,8 @@ body {
     padding: 12px 8px;
     position: relative;
     /* text-align: center; */
+    font-size: 13px;
+    font-weight: bold;
     text-align: left;
 }
 
@@ -102,6 +105,14 @@ body {
     background-color: orange;
 }
 
+.label-accepted {
+    background-color: green;
+}
+
+.label-rejected {
+    background-color: red;
+}
+
 .label {
     display: inline;
     padding: 0.2em 0.6em 0.3em;
@@ -113,6 +124,7 @@ body {
     white-space: nowrap;
     vertical-align: baseline;
     border-radius: 0.25em;
+    font-size: 12px;
 }
 
 .accept-button {
@@ -123,7 +135,7 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 10px;
     margin: 2px 2px;
     cursor: pointer;
 }
@@ -136,7 +148,7 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 10px;
     margin: 2px 2px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -150,7 +162,7 @@ body {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 12px;
+    font-size: 10px;
     margin: 2px 2px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;

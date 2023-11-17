@@ -93,7 +93,6 @@ exports.assign_viva = async (req, res) => {
               res.status(200).send('successful');
             }
           });
-          console.log('inserted viva schedule');
         }
       });
     } else {
@@ -247,6 +246,86 @@ exports.reject_application = async (req, res) => {
       res.status(500).send('error');
     } else {
       res.status(200).send('successful');
+    }
+  })
+}
+
+exports.resolve_complaint = async (req, res) => {
+  console.log(req.body);
+  const query = `UPDATE complaint
+  SET complaint_status = ?,
+  date_resolved = CURDATE()
+  WHERE complaint_number = ?
+  `
+  db.query(query, ['resolved', req.body.complaint_number], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('error');
+    } else {
+      res.status(200).send('successful');
+    }
+  })
+}
+
+exports.delete_complaint = async (req, res) => {
+  console.log(req.body);
+  const query = 'DELETE FROM complaint WHERE complaint_number = ?'
+  db.query(query, [req.body.complaint_number], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('error');
+    } else {
+      res.status(200).send('successful');
+    }
+  })
+}
+
+exports.delete_application = async (req, res) => {
+  // console.log(req.body);
+  const { student_id } = req.body;
+  const feeQuery = 'DELETE FROM admission_fee WHERE student_id = ?';
+  db.query(feeQuery, [student_id], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('error');
+    } else {
+      const vivaQuery = 'DELETE FROM viva WHERE student_id = ?';
+      db.query(vivaQuery, [student_id], (err_viva, res_viva) => {
+        if (err_viva) {
+          console.log(err_viva);
+          res.status(500).send('error');
+        } else {
+          const applicationQuery = 'DELETE FROM applications WHERE student_id = ?';
+          db.query(applicationQuery, [student_id], (err_app, res_app) => {
+            if (err_app) {
+              console.log(err_app);
+              res.status(500).send('error');
+            } else {
+              res.status(200).send('successful');
+            }
+          })
+        }
+      })
+    }
+  })
+}
+
+exports.resolve_leave_request = async (req, res) => {
+  const query = 'DELETE FROM leave_request where student_id = ?';
+  db.query(query, [req.body.student_id], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('error');
+    } else {
+      const deleteQuery = 'DELETE FROM student where student_id = ?'
+      db.query(deleteQuery, [req.body.student_id], (err_del, res_del) => {
+        if (err_del) {
+          console.log(err_del);
+          res.status(500).send('error');
+        } else {
+          res.status(200).send('successful');
+        }
+      })
     }
   })
 }

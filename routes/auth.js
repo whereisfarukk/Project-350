@@ -17,5 +17,11 @@ router.post("/assign_viva", operationsController.assign_viva);
 router.post("/assign_payment", operationsController.assign_payment);
 router.post("/assign_room", operationsController.assign_room);
 router.post("/reject_application", operationsController.reject_application);
+router.post("/delete_application", operationsController.delete_application);
+
+router.post("/resolve_complaint", operationsController.resolve_complaint);
+router.post("/delete_complaint", operationsController.delete_complaint);
+
+router.post("/resolve_leave_request", operationsController.resolve_leave_request);
 
 module.exports = router;
