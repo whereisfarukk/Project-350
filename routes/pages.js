@@ -47,6 +47,7 @@ router.get("/assign_payment", (req, res) => {
   res.render("assign_payment", {data: req.query});
 });
 
+
 router.get("/assign_room", (req, res) => {
   const query = 'SELECT * FROM room WHERE occupancy_status < ?';
   db.query(query, [4], (error, results) => {
@@ -66,7 +67,11 @@ router.get("/assign_room", (req, res) => {
 });
 
 router.get("/admin_dashboard_applicants", (req, res) => {
-  const query = 'SELECT * FROM applications WHERE application_status = ?';
+  const query = `
+  SELECT * FROM applications
+  WHERE application_status = ?
+  ORDER BY cgpa DESC, merit_position ASC , date_applied ASC
+  `;
   const applicaton_status = 'pending';
   db.query(query, [applicaton_status], (error, results) => {
     if (error) {
@@ -157,13 +162,50 @@ router.get("/details", (req, res) => {
 });
 
 router.get("/room_details", (req, res) => {
-  const query = 'SELECT * FROM room WHERE occupancy_status < ?';
-  db.query(query, [4], (error, results) => {
+  const query = 'SELECT * FROM room WHERE capacity - occupancy_status > 0';
+  db.query(query, (error, results) => {
     if (error) {
       console.log(error);
       res.status(500).send('Error fetching data from the database');
     } else {
       res.render("room_details", { data: results });
+    }
+  });
+});
+
+router.get("/payment", (req, res) => {
+  const query = 'SELECT * FROM payment';
+  db.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else {
+      res.render("payment", { data: results });
+    }
+  });
+});
+
+
+router.get("/complaints_details", (req, res) => {
+  const query = 'SELECT * FROM complaint ORDER BY complaint_status';
+  db.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else {
+      res.render("complaints_details", { data: results });
+    }
+  });
+});
+
+router.get("/leave_requests", (req, res) => {
+  const query = 'SELECT * FROM leave_request ORDER BY leave_date';
+  db.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.status(500).send('Error fetching data from the database');
+    } else {
+      res.render("leave_requests", { data: results });
     }
   });
 });

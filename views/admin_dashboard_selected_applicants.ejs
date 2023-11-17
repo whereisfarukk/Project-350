@@ -7,7 +7,10 @@
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
       rel="stylesheet"
     />
+    <link href="/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/admin_dashboard_applicants.css" />
+    <link rel="stylesheet" href="/custom.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <style>
       /* Styling for the modal */
       h1 {
@@ -15,6 +18,7 @@
       }
 
       h2 {
+        margin-top: 40px;
         text-align: center;
       }
       .modal {
@@ -46,6 +50,60 @@
     </style>
   </head>
   <body>
+    <!-- Navigation -->
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Logo and responsive toggle -->
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">
+                <span class="glyphicon glyphicon-fire"></span> 
+                Bangabandhu Hall, SUST
+              </a>
+          </div>
+          <!-- Navbar links -->
+          <div class="collapse navbar-collapse" id="navbar">
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="/admin_dashboard">Home</a>
+                  </li>
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Applications <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="about-us">
+            <li><a href="/admin_dashboard_applicants">New applications</a></li>
+            <li><a href="/admin_dashboard_selected_applicants">Selected For Viva</a></li>
+            <li><a href="/admin_dashboard_accepted_applicants">Pending Payment</a></li>
+                          <li><a href="/admin_dashboard_admitted_applicants">Admitted</a></li>
+                          <li><a href="/admin_dashboard_rejected_applicants">Rejected</a></li>
+          </ul>
+        </li>
+                  <!-- <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Complaints <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="about-us">
+            <li><a href="/admin_dashboard_applicants">Pending</a></li>
+            <li><a href="/admin_dashboard_selected_applicants">Resolved</a></li>
+          </ul>
+        </li> -->
+                  <li>
+                      <a href="/payment">Payment</a>
+                  </li>
+                  <li>
+                    <a href="/complaints_details">Complaints</a>
+                </li>
+                  <li>
+                      <a href="/leave_requests">Leave Requests</a>
+                  </li>
+              </ul>
+              
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+  </nav>
     <h2 class="mail-link">Applicants Selected For Viva</h2>
     <br>
     <table class="user-list">
@@ -54,9 +112,9 @@
           <th><span>Applicant</span></th>
           <!-- <th>&nbsp;</th> -->
           <th><span>     Viva Schedule               Location</span></th>
-          <th><span>Status</span></th>
-          <th><span>       Details </span></th>
-          <th><span>                      Actions </span></th>
+          <th><span>  Status</span></th>
+          <th><span>     Details </span></th>
+          <th><span>                   Actions </span></th>
           <!-- <th>&nbsp;</th> -->
         </tr>
       </thead>
@@ -78,17 +136,17 @@
                 const date = new Date(dateString);
           
                 // Format the date as dd/mm/yy
-                const day = date.getDate().toString().padStart(2, '0');
+                const day = date.getDate().toString().padStart(2, '0'); 
                 const month = (date.getMonth() + 1).toString().padStart(2, '0');
                 const year = date.getFullYear().toString().slice(-2);
                 return `${day}/${month}/${year}`;
               }
            %>
           <!-- <td><%= formatDate(row.viva_date) + ' ' + row.viva_time + "   " + row.viva_room %></td> -->
-          <td  style="white-space: pre;">  <%= `${formatDate(row.viva_date)}  ${row.viva_time} \t\t  ${row.viva_room}` %>
+          <td  style="white-space: pre;">  <%= `     ${formatDate(row.viva_date)}\t  ${row.viva_time}  \t\t\t\t  ${row.viva_room}` %>
           </td>
           <td>
-            <span class="label label-default"><%= row.application_status %></span>
+            <span class="label label-accepted"><%= row.application_status %></span>
           </td>
           <td>
             <button class="user-link" onclick="showPopup('<%= row.student_id%>')">View details</button>
@@ -122,6 +180,7 @@
 
     // JavaScript to hide the popup
     function hidePopup() {
+      window.location.reload();
       document.getElementById('popupModal').style.display = 'none';
     }
 
@@ -163,5 +222,15 @@
       });
     }
     </script>
+    <script src="/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/jquery.easing.min.js"></script>
+    
+    <!-- Custom Javascript -->
+    <script src="/custom.js"></script>
   </body>
 </html>

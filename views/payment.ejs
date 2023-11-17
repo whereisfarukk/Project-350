@@ -11,7 +11,7 @@
     <link href="/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/custom.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <title>Complaints Details</title>
+    <title>Leave Requests</title>
     <style>
       body {
         font-family: 'Arial', 'Helvetica', 'sans-serif';
@@ -25,6 +25,14 @@
         text-decoration: none;
         color: #000;
       }
+
+      .table_container {
+        margin-top: 2%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .form-row {
           display: flex;
           flex-wrap: wrap;
@@ -54,7 +62,11 @@
       #data_table {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
-        width: 100%;
+        width: 50%;
+      }
+
+      #data_table td {
+        text-align: center;
       }
 
       #data_table td, #data_table th {
@@ -144,7 +156,7 @@
           </ul>
         </li> -->
                   <li>
-                      <a href="/admin_dashboard_viewpayment">Payment</a>
+                      <a href="/payment">Payment</a>
                   </li>
                   <li>
                       <a href="/complaints_details">Complaints</a>
@@ -158,54 +170,47 @@
       </div><!-- /.container -->
   </nav>
     <div>
-      <h3 class="centered-heading">Complaints</h3>
+      <h3 class="centered-heading">Payment Details</h3>
     </div>
-    <table id="data_table">
-      <thead>
-        <tr>
-          <th>Student ID</th>
-          <th>Room</th>
-          <th>Type</th>
-          <th>Complaint Description</th>
-          <th>Received</th>
-          <th>Resolved</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%
-        function formatDate(dateString) {
-          if (!dateString) {
-            return "";
-          }
-          // Create a JavaScript Date object from the database string
-              const date = new Date(dateString);
-        
-              // Format the date as dd/mm/yy
-              const day = date.getDate().toString().padStart(2, '0');
-              const month = (date.getMonth() + 1).toString().padStart(2, '0');
-              const year = date.getFullYear().toString().slice(-2);
-              return `${day}/${month}/${year}`;
-            }
-         %>
-        <% data.forEach(row => { %>
-          <tr id="complaint-<%= row.complaint_number %>">
-            <td><%= row.student_id %></td>
-            <td><%= row.room_id %></td>
-            <td><%= row.complaint_type %></td>
-            <td><%= row.complaint_description %></td>
-            <td><%= formatDate(row.date_received) %></td>
-            <td><%= formatDate(row.date_resolved) %></td>
-            <td><%= row.complaint_status %></td>
-            <td>
-              <button class="accept-button" onclick="resolveComplaint('<%= row.complaint_number%>')">Mark resolved</button>
-              <button class="reject-button" onclick="deleteComplaint('<%= row.complaint_number%>')">Delete</button>
-            </td>
+    <div class="table_container">
+      <table id="data_table">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <!-- <th>View Details</th> -->
+            <th>Requested Leave Date</th>
+            <th>Actions</th>
           </tr>
-        <% }) %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <%
+          function formatDate(dateString) {
+            if (!dateString) {
+              return "";
+            }
+            // Create a JavaScript Date object from the database string
+                const date = new Date(dateString);
+          
+                // Format the date as dd/mm/yy
+                const day = date.getDate().toString().padStart(2, '0');
+                const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                const year = date.getFullYear().toString().slice(-2);
+                return `${day}/${month}/${year}`;
+              }
+          %>
+          <% data.forEach(row => { %>
+            <tr>
+              <td><%= row.student_id %></td>
+              <td><%= formatDate(row.leave_date) %></td>
+              <td>
+                <button class="accept-button" onclick="resolveLeaveRequest('<%= row.student_id%>')">Mark resolved</button>
+                <button class="reject-button" onclick="deleteComplaint('<%= row.student_id%>')">Delete</button>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      </div>
     <script>
       // const tableRows = document.querySelectorAll('tr[id^=room-]');
       // for (const row of tableRows) {
@@ -222,39 +227,19 @@
       //   });
       // }
 
-      function resolveComplaint(complaint_number) {
-      fetch('/auth/resolve_complaint', {
+      function resolveLeaveRequest(student_id) {
+      fetch('/auth/resolve_leave_request', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ complaint_number: complaint_number })
+        body: JSON.stringify({ student_id: student_id })
       })
       .then(response => {
         if (response.ok) {
           window.location.reload();
         } else {
-          console.error('Failed to update status');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    }
-
-    function deleteComplaint(complaint_number) {
-      fetch('/auth/delete_complaint', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ complaint_number: complaint_number })
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.reload();
-        } else {
-          console.error('Failed to update status');
+          console.error('Failed to resolve');
         }
       })
       .catch(error => {
