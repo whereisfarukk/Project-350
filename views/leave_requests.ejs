@@ -185,9 +185,6 @@
         <tbody>
           <%
           function formatDate(dateString) {
-            if (!dateString) {
-              return "";
-            }
             // Create a JavaScript Date object from the database string
                 const date = new Date(dateString);
           
@@ -203,7 +200,7 @@
               <td><%= row.student_id %></td>
               <td><%= formatDate(row.leave_date) %></td>
               <td>
-                <button class="reject-button" onclick="resolveLeaveRequest('<%= row.student_id%>')">CONFIRM LEAVE / DELETE</button>
+                <button class="reject-button" onclick="resolveLeaveRequest('<%= row.student_id%>')">CONFIRM LEAVE / DELETE STUDENT</button>
                 <!-- <button class="reject-button" onclick="deleteComplaint('<%= row.student_id%>')">Delete</button> -->
               </td>
             </tr>

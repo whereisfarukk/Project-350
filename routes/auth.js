@@ -12,6 +12,7 @@ router.post("/admin_register", authController.admin_register);
 router.post("/admin_signin", authController.admin_signin);
 
 router.post("/complain", operationsController.complain);
+
 router.post("/application", operationsController.application);
 router.post("/assign_viva", operationsController.assign_viva);
 router.post("/assign_payment", operationsController.assign_payment);
@@ -23,5 +24,7 @@ router.post("/resolve_complaint", operationsController.resolve_complaint);
 router.post("/delete_complaint", operationsController.delete_complaint);
 
 router.post("/resolve_leave_request", operationsController.resolve_leave_request);
+
+router.post("/add_payment", operationsController.add_payment);
 
 module.exports = router;

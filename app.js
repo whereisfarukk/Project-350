@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+const session = require('express-session');
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
@@ -20,6 +21,12 @@ app.set("view engine", "ejs");
 
 app.use("/", require("./routes/pages"));
 app.use("/auth", require("./routes/auth"));
+
+app.use(session({
+  secret: 'abcxyz',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.listen(4000, () => {
   console.log("server started on port 4000");

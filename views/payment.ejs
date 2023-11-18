@@ -11,7 +11,7 @@
     <link href="/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/custom.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <title>Leave Requests</title>
+    <title>Payment Details</title>
     <style>
       body {
         font-family: 'Arial', 'Helvetica', 'sans-serif';
@@ -59,26 +59,26 @@
         text-align: center;
       }
 
-      #data_table {
+      .data_table {
         font-family: Arial, Helvetica, sans-serif;
         border-collapse: collapse;
-        width: 50%;
+        width: 60%;
       }
 
-      #data_table td {
+      .data_table td {
         text-align: center;
       }
 
-      #data_table td, #data_table th {
+      .data_table td, .data_table th {
         border: 1px solid #ddd;
         padding: 8px;
       }
 
-      #data_table tr:nth-child(even){background-color: #f2f2f2;}
+      .data_table tr:nth-child(even){background-color: #f2f2f2;}
 
-      #data_table tr:hover {background-color: #ddd;}
+      .data_table tr:hover {background-color: #ddd;}
 
-      #data_table th {
+      .data_table th {
         text-align: center;
         padding-top: 12px;
         padding-bottom: 12px;
@@ -144,9 +144,9 @@
             <li><a href="/admin_dashboard_applicants">New applications</a></li>
             <li><a href="/admin_dashboard_selected_applicants">Selected For Viva</a></li>
             <li><a href="/admin_dashboard_accepted_applicants">Pending Payment</a></li>
-                          <li><a href="/admin_dashboard_admitted_applicants">Admitted</a></li>
-                          <li><a href="/admin_dashboard_rejected_applicants">Rejected</a></li>
-          </ul>
+            <li><a href="/admin_dashboard_admitted_applicants">Admitted</a></li>
+            <li><a href="/admin_dashboard_rejected_applicants">Rejected</a></li>
+        </ul>
         </li>
                   <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Complaints <span class="caret"></span></a>
@@ -173,13 +173,40 @@
       <h3 class="centered-heading">Payment Details</h3>
     </div>
     <div class="table_container">
-      <table id="data_table">
+      <table class="data_table">
         <thead>
           <tr>
             <th>Student ID</th>
-            <!-- <th>View Details</th> -->
-            <th>Requested Leave Date</th>
-            <th>Actions</th>
+            <th>Amount (tk)</th>
+            <th>Slip Number</th>
+            <th>Payment Type</th>
+            <th>Payment Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <form id="payment_form">
+              <td><input name="student_id" type="text" required></td>
+              <td><input name="amount" type="number"></td>
+              <td><input name="payslip_number" type="text"></td>
+              <td><input name="payment_type" type="text"></td>
+              <td><input name="payment_date" type="date"></td>
+              <td><button type="submit" class="accept-button">Add</button></td>
+            </form>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    <div class="table_container">
+      <table class="data_table">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Amount (tk)</th>
+            <th>Slip Number</th>
+            <th>Payment Type</th>
+            <th>Payment Date</th>
           </tr>
         </thead>
         <tbody>
@@ -201,12 +228,15 @@
           <% data.forEach(row => { %>
             <tr>
               <td><%= row.student_id %></td>
-              <td><%= formatDate(row.leave_date) %></td>
-              <td>
+              <td><%= row.amount %></td>
+              <td><%= row.payslip_number %></td>
+              <td><%= row.payment_type %></td>
+              <td><%= formatDate(row.payment_date) %></td>
+              <!-- <td>
                 <button class="accept-button" onclick="resolveLeaveRequest('<%= row.student_id%>')">Mark resolved</button>
                 <button class="reject-button" onclick="deleteComplaint('<%= row.student_id%>')">Delete</button>
               </td>
-            </tr>
+            </tr> -->
           <% }) %>
         </tbody>
       </table>
@@ -227,26 +257,25 @@
       //   });
       // }
 
-      function resolveLeaveRequest(student_id) {
-      fetch('/auth/resolve_leave_request', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ student_id: student_id })
-      })
-      .then(response => {
-        if (response.ok) {
-          window.location.reload();
-        } else {
-          console.error('Failed to resolve');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
+      document.querySelector('payment_form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        var confirmation = confirm('Confirm adding payment?');
+            if (confirmation) {
+              const formData = new FormData(event.target);
+              const response = await fetch('/auth/add_payment', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(Object.fromEntries(formData)),  
+              });
+            }
+            if (response.status === 500) {
+              alert('Error');
+            } else {
+              window.location.href= "/payment";
+            }
       });
-    }
-
     </script>
     <script src="/jquery-1.11.3.min.js"></script>
 
