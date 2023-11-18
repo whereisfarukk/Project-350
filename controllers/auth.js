@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const session = require("express-session")
 const db = require("../public/dbService");
 
 const saltRounds = 10;
@@ -7,19 +8,22 @@ const saltRounds = 10;
 exports.student_signin = async (req, res) => {
   // console.log(req.body);
   const {student_id, password} = req.body;
+  // req.session.username = student_id;
 
   const query = 'SELECT * FROM users WHERE student_id = ?';
   db.query(query, [student_id], (error, results) => {
     if (error) {
-      res.status(500).send('error!');
+      res.status(500).send('error');
     } else if (results.length === 0) {
       res.status(401).send('Not registered');
     } else {
       bcrypt.compare(password, results[0].password, (error, result) => {
         if (error) {
-          res.status(500).send('error!');
+          res.status(500).send('error');
         } else if (result) {
-          res.status(200).send('successful!');
+          res.status(200).send({ student_id: student_id});
+          // const src = `dashboard?student_id=${student_id}`
+          // window.location.href = src;
         } else {
           res.status(401).send('Incorrect password');
         }
@@ -37,7 +41,7 @@ exports.student_register = (req, res) => {
     if (error) {
       res.status(500).send('error');
     } else if (results.length > 0) {
-      res.status(401).send('Already registered!');
+      res.status(401).send('Already registered');
     } else {
       bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) {
@@ -68,7 +72,7 @@ exports.student_register = (req, res) => {
                 // return res.render("login_student.ejs", {
                 //   // message: "user registered",
                 // });
-                res.status(200).send('successful!');
+                res.status(200).send('successful');
               }
             }
           );
@@ -85,15 +89,15 @@ exports.admin_signin = async (req, res) => {
   const query = 'SELECT * FROM admin WHERE admin_id = ?';
   db.query(query, [admin_id], (error, results) => {
     if (error) {
-      res.status(500).send('error!');
+      res.status(500).send('error');
     } else if (results.length === 0) {
       res.status(401).send('Not registered');
     } else {
       bcrypt.compare(password, results[0].password, (error, result) => {
         if (error) {
-          res.status(500).send('error!');
+          res.status(500).send('error');
         } else if (result) {
-          res.status(200).send('successful!');
+          res.status(200).send('successful');
         } else {
           res.status(401).send('Incorrect password');
         }
@@ -111,7 +115,7 @@ exports.admin_register = (req, res) => {
     if (error) {
       res.status(500).send('error');
     } else if (results.length > 0) {
-      res.status(401).send('Already registered!');
+      res.status(401).send('Already registered');
     } else {
       bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) {
@@ -142,7 +146,7 @@ exports.admin_register = (req, res) => {
                 // return res.render("login_student.ejs", {
                 //   // message: "user registered",
                 // });
-                res.status(200).send('successful!');
+                res.status(200).send('successful');
               }
             }
           );

@@ -20,7 +20,8 @@ router.get("/application", (req, res) => {
 });
 
 router.get("/dashboard", (req, res) => {
-  res.render("dashboard");
+  console.log(req.body, req.query);
+  res.render("dashboard", { student_id : req.query.student_id });
 });
 
 router.get("/complain", (req, res) => {
@@ -208,6 +209,60 @@ router.get("/leave_requests", (req, res) => {
       res.render("leave_requests", { data: results });
     }
   });
+});
+
+router.get("/application_status", (req, res) => {
+  const student_id = req.query.student_id;
+  console.log("appliation_status", student_id);
+  // const query = `
+  // SELECT 
+  //   applications.student_id AS student_id,
+  //   applications.application_status AS application_status,
+  //   viva.viva_date AS viva_date,
+  //   viva.viva_time AS viva_time,
+  //   viva.viva_room AS viva_room,
+  //   admission_fee.ad_fee_amount AS admission_fee_amount,
+  //   admission_fee.ad_fee_payment_date AS last_date_of_payment
+  //   FROM applications
+  //   LEFT JOIN viva ON applications.student_id = viva.student_id
+  //   LEFT JOIN admission_fee ON applications.student_id = admission_fee.student_id
+  //   WHERE applications.student_id = ?;
+
+  // `
+  // const query = `
+  //   SELECT student_id, application_status FROM applications WHERE student_id = ?;
+  //   SELECT * FROM viva WHERE student_id = ?;
+  //   SELECT * FROM admission_fee student_id = ?;
+  // `
+  const appQuery = 'SELECT student_id, application_status FROM applications WHERE student_id = ?';
+
+  db.query(appQuery, [student_id], (err_app, res_app) => {
+    if (err_app) {
+      console.log(err_app);
+      res.status(500).send('error');
+    } else {
+      const vivaQuery = 'SELECT * FROM viva WHERE student_id = ?'
+      db.query(vivaQuery, [student_id], (err_viva, res_viva) => {
+        if (err_viva) {
+          console.log(err_viva);
+          res.status(500).send('error');
+        } else {
+          const adFeeQuery = 'SELECT * FROM admission_fee WHERE student_id = ?';
+          db.query(adFeeQuery, [student_id], (err_ad, res_ad) => {
+            if (err_ad) {
+              console.log( err_ad);
+              res.status(500).send('error');
+            } else {
+              console.log(res_app);
+              console.log(res_viva);
+              console.log(res_ad);
+              res.status(200).render("application_status", {r1 : res_app[0], r2 : res_viva[0], r3: res_ad[0] })
+            }
+          })
+        }
+      })
+    }
+  })
 });
 
 module.exports = router;

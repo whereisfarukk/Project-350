@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .data_table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+  }
+
+  .data_table td, .data_table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .data_table tr:nth-child(even){background-color: #f2f2f2;}
+
+  .data_table tr:hover {background-color: #ddd;}
+
+  .data_table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #00A300;
+    color: white;
+  }
+</style>
+</head>
+    <body>
+
+    <h1>Application Details</h1>
+
+    <% if (r1) { %>
+      <div class=table_container>
+      <table class="data_table">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+    
+        <% Object.entries(r1).forEach(([columnName, columnValue]) => { %>
+          <tr>
+          <td><%= columnName %></td>
+          <td><%= columnValue %></td>
+          </tr>
+      <% }); %>
+      </table>
+    </div>
+    <% } else { %>
+      <p></p>
+    <% } %>
+
+    <% if (r2) { %>
+      <div class=table_container></div>
+      <table class = "data_table">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+    
+        <% Object.entries(r2).forEach(([columnName, columnValue]) => { %>
+          <tr>
+          <td><%= columnName %></td>
+          <td><%= columnValue %></td>
+          </tr>
+      <% }); %>
+      </table>
+    </div>
+    <% } else { %>
+      <p></p>
+    <% } %>
+
+    <% if (r3) { %>
+      <div class=table_container>
+      <table class = "data_table">
+        <tr>
+          <th>Admission Fee Amount</th>
+          <th>Last Date of Payment</th>
+        </tr>
+    
+        <% Object.entries(r3).forEach(([columnName, columnValue]) => { %>
+          <tr>
+          <td><%= columnName %></td>
+          <td><%= columnValue %></td>
+          </tr>
+      <% }); %>
+      </table>
+    </div>
+    <% } else { %>
+      <p></p>
+    <% } %>
+
+    </body>
+</html>
+
+

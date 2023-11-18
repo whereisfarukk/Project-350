@@ -329,3 +329,24 @@ exports.resolve_leave_request = async (req, res) => {
     }
   })
 }
+
+exports.add_payment = async (req, res) => {
+  const table = 'payment';
+  // Extract column names and values from req.body
+  const columns = Object.keys(req.body);
+  const values = Object.values(req.body);
+
+  // SQL query to insert data into the table
+  const insertQuery = `
+    INSERT INTO ${table} (${columns.join(', ')})
+    VALUES (${Array(values.length).fill('?').join(', ')})
+  `;
+  db.query(insertQuery, values, (err, r) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send('error');
+    } else {
+      res.status(200).send('successful');
+    }
+  });
+}

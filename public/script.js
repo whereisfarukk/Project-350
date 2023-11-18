@@ -24,18 +24,22 @@ alreadyMemberLink.addEventListener("click", function (event) {
 
 studentLoginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-    const formData = new FormData(event.target);
+  const formData = new FormData(event.target);
+  
+  try {
     const response = await fetch('/auth/student_signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(Object.fromEntries(formData)),  
+      body: JSON.stringify(Object.fromEntries(formData)),
     });
-    
-    if (response.status === 200) {
-      window.location.href = "/dashboard";
-      // response.redirect("/dashboard"); // Change the URL to your desired destination
+
+    if (response.ok) {
+      const data = await response.json();
+      const studentId = data.student_id;
+      window.location.href = `/dashboard?student_id=${studentId}`;
+      // window.location.href = "/dashboard";
     } else if (response.status === 401) {
       // Invalid username or password
       const errorContainer = document.querySelector('#error-message');
@@ -44,6 +48,9 @@ studentLoginForm.addEventListener('submit', async (event) => {
       const errorContainer = document.querySelector('#error-message');
       errorContainer.textContent = 'Oops, something went wrong';
     }
+  } catch (error) {
+    console.error('Error:', error);
+  }
 });
 
 studentSignUpForm.addEventListener('submit', async (event) => {
