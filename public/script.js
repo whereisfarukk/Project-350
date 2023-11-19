@@ -55,6 +55,31 @@ studentLoginForm.addEventListener('submit', async (event) => {
 
 studentSignUpForm.addEventListener('submit', async (event) => {
   event.preventDefault();
+  const firstName = document.querySelector('input[name="first_name"]').value;
+  const lastName = document.querySelector('input[name="last_name"]').value;
+  const email = document.querySelector('input[name="email"]').value;
+  const studentIdArray = document.querySelectorAll('input[name="student_id"]');
+  const studentId = studentIdArray[1].value;
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const passwordArray = document.querySelectorAll('input[name="password"]');
+  const password = passwordArray[1].value;
+  const repeatPassword = document.getElementById('re_pass');
+
+  // Check if passwords match
+ if (!/^[a-zA-Z]+$/.test(firstName)) {
+    alert('First name must contain only letters.');
+  } else if (!/^[a-zA-Z]+$/.test(lastName)) {
+    alert('Last name must contain only letters.');
+  } else if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address.');
+  } else if (!/^\d{10}$/.test(studentId)) {
+    alert('Student ID must be of 10 digits');
+  } else if (password !== repeatPassword) {
+    alert('Passwords do not match');
+  } else {
+    event.preventDefault();
     const formData = new FormData(event.target);
     const response = await fetch('/auth/student_register', {
       method: 'POST',
@@ -74,5 +99,6 @@ studentSignUpForm.addEventListener('submit', async (event) => {
       const errorContainer = document.querySelector('#error-message1');
       errorContainer.textContent = 'Oops, something went wrong';
     }
+  }
 });
 
