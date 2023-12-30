@@ -22,10 +22,12 @@
         text-align: center;
       }
       .modal {
+        margin-top: 3.7%;
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5);
@@ -35,11 +37,16 @@
       }
   
       .modal-content {
-        background: white;
-        padding: 20px;
+        position: fixed;
+        margin-top: -4%;
+        /* background: rgba(255, 255, 255, 0.8); */
+        /* background:rgba(255,257,153,0.75); */
+        background: #fff;
+        padding: 8px; 
         border: 1px solid #ccc;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
+
 
       /* .details {
       width: 600px;
@@ -61,8 +68,9 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">
-                <span class="glyphicon glyphicon-fire"></span> 
+              <a class="navbar-brand" href="/admin_dashboard">
+                <!-- <span class="glyphicon glyphicon-fire"></span>  -->
+                  <span class="logo-container"><img src="/images/uni_logo.png" width="40" height="40" alt="uni_logo"></span> 
                 Bangabandhu Hall, SUST
               </a>
           </div>
@@ -154,7 +162,7 @@
             <div id="popupModal" class="modal">
               <div class="modal-content">
                 <iframe id="iframe" frameborder="0"></iframe>
-                <button onclick="hidePopup()">Close</button>
+                <button class='closebutton'onclick="hidePopup()">Close</button>
               </div>
             </div>
           </td>
@@ -173,7 +181,7 @@
     function showPopup(student_id) {
       const iframe = document.getElementById('iframe');
       iframe.src = `/details?student_id=${student_id}`;
-      iframe.height = 650;
+      iframe.height = 500;
       iframe.width = 600;
       document.getElementById('popupModal').style.display = 'flex';
     }

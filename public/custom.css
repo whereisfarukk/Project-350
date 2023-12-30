@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
 html,
 body {
     width: 100%;
     height: 100%;
-    font-family: 'Open Sans','Helvetica Neue','Arial','sans-serif';
+    font-family: 'Open Sans', 'Helvetica Neue', 'Arial', 'sans-serif', 'Lato';
 }
 
 a {
@@ -31,11 +33,17 @@ p {
     background-color: maroon;
 }
 
+.logo-container {
+    margin-right: 10px;
+    /* Adjust the margin as needed */
+}
+
 .dashboard-content {
     position: relative;
     width: 100%;
     padding: 100px 15px 70px;
     text-align: center;
+
 }
 
 
@@ -61,6 +69,7 @@ header .header-content {
     width: 100%;
     padding: 100px 15px 70px;
     text-align: center;
+
 }
 
 header .header-content .header-content-inner h1 {
@@ -68,13 +77,14 @@ header .header-content .header-content-inner h1 {
     margin-bottom: 20px;
     font-size: 50px;
     font-weight: 300;
+
 }
 
 header .header-content .header-content-inner p {
     margin-bottom: 50px;
     font-size: 16px;
     font-weight: 300;
-    color: rgba(255,255,255,.7);
+    color: rgba(255, 255, 255, .7);
 }
 
 @media(min-width:768px) {
@@ -97,9 +107,9 @@ header .header-content .header-content-inner p {
         max-width: 1000px;
     }
 
-	header .header-content .header-content-inner h1 {
-    	font-size: 100px;
-		}
+    header .header-content .header-content-inner h1 {
+        font-size: 100px;
+    }
 
     header .header-content .header-content-inner p {
         margin-right: auto;
@@ -115,7 +125,7 @@ header .header-content .header-content-inner p {
 }
 
 .intro {
-	color: #fff;
+    color: #fff;
     background-color: #337ab7;
     padding: 70px 0;
     text-align: center;
@@ -123,16 +133,17 @@ header .header-content .header-content-inner p {
 
 .content {
     padding: 100px 0;
+
 }
 
 .content-2 {
-	color: #fff;
+    color: #fff;
     background-color: #222;
 }
 
 .content-3 {
-	padding: 20px 0 40px;
-	text-align: center;
+    padding: 20px 0 40px;
+    text-align: center;
 }
 
 .promo,
@@ -142,7 +153,7 @@ header .header-content .header-content-inner p {
 .promo a:hover,
 .promo a:active {
     color: white;
-	text-shadow: 0px 0px 40px black;
+    text-shadow: 0px 0px 40px black;
     text-decoration: none;
 }
 
@@ -153,8 +164,8 @@ header .header-content .header-content-inner p {
 }
 
 .promo-item:hover {
-    background-size: 110%; 
-    border: 10px solid rgba(255,255,255,0.3);
+    background-size: 110%;
+    border: 10px solid rgba(255, 255, 255, 0.3);
     line-height: 160px;
 }
 
@@ -165,67 +176,76 @@ header .header-content .header-content-inner p {
 }
 
 .item-1 {
-	background: url('../images/writing.jpg');
-	}
-	
+    background: url('../images/writing.jpg');
+}
+
 .item-2 {
-	background: url('../images/concert.jpg');
-	}
-	
+    background: url('../images/concert.jpg');
+}
+
 .item-3 {
-	background: url('../images/pencil_sharpener.jpg');
-	}
-		
+    background: url('../images/pencil_sharpener.jpg');
+}
+
 .item-1,
 .item-2,
 .item-3 {
-	background-size: cover;
-	background-position: 50% 50%;
-	}
+    background-size: cover;
+    background-position: 50% 50%;
+}
 
 .page-footer {
-	text-align: center;
-	}
+    text-align: center;
+}
 
 .page-footer .contact {
-	padding: 100px 0;
-	background-color: #337ab7;
-	color: #fff;
-	}
+    padding: 100px 0;
+    background-color: #337ab7;
+    color: #fff;
+}
 
 .page-footer .contact p {
-	font-size: 22px;
-	font-weight: 300;
-	}
-	
-.content-3 .glyphicon,	
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.content-3 .glyphicon,
 .page-footer .contact .glyphicon {
-	font-size: 32px;
-	font-weight: 700;
-	}
-		
+    font-size: 32px;
+    font-weight: 700;
+}
+
 .page-footer .small-print {
-	padding: 50px 0 40px;
-	font-weight: 300;
-	}
+    padding: 50px 0 40px;
+    font-weight: 300;
+}
 
 .text-light {
-    color: rgba(255,255,255,.7);
+    color: rgba(255, 255, 255, .7);
 }
 
 .navbar-default {
     font-size: large;
-    font-weight:bold;
-    -webkit-text-fill-color: #fff; /* important */
-    border-color: rgba(34,34,34,.05);
-    background-color: #337ab7;
+    /* font-weight: bold; */
+    -webkit-text-fill-color: #fff;
+    /* important */
+    border-color: rgba(34, 34, 34, .05);
+    /* background-color: #17141d; */
+    background-color: rgba(23, 20, 29, 0.9);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
+    font: 400 20px "Lato", sans-serif;
 }
 
 .navbar-default .navbar-header .navbar-brand {
     color: #fff;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    /* Adjust the color as needed */
+    font-size: 20px;
+    margin-left: -50px;
 }
 
 .navbar-default .navbar-header .navbar-brand:hover,
@@ -233,28 +253,28 @@ header .header-content .header-content-inner p {
     color: #fff;
 }
 
-.navbar-default .nav > li>a,
+.navbar-default .nav>li>a,
 .navbar-default .nav>li>a:focus {
     color: #fff;
 }
 
-.navbar-default .nav > li>a:hover,
+.navbar-default .nav>li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
     color: black;
 }
 
-.navbar-default .nav > li>a:hover,
+.navbar-default .nav>li>a:hover,
 .navbar-default .nav>li>a:focus {
     color: black;
 }
 
-.navbar-default .nav > li.active>a,
+.navbar-default .nav>li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: #fff!important;
+    color: #fff !important;
     background-color: transparent;
 }
 
-.navbar-default .nav > li.active>a:hover,
+.navbar-default .nav>li.active>a:hover,
 .navbar-default .nav>li.active>a:focus:hover {
     color: #fff;
     background-color: transparent;
@@ -327,7 +347,7 @@ header .header-content .header-content-inner p {
 .btn-default.focus,
 .btn-default:active,
 .btn-default.active,
-.open > .dropdown-toggle.btn-default {
+.open>.dropdown-toggle.btn-default {
     border-color: #eee;
     color: #222;
     background-color: #eee;
@@ -335,7 +355,7 @@ header .header-content .header-content-inner p {
 
 .btn-default:active,
 .btn-default.active,
-.open > .dropdown-toggle.btn-default {
+.open>.dropdown-toggle.btn-default {
     background-image: none;
 }
 
@@ -380,7 +400,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.focus,
 .btn-primary:active,
 .btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
+.open>.dropdown-toggle.btn-primary {
     border-color: limegreen;
     color: #fff;
     background-color: limegreen;
@@ -388,7 +408,7 @@ fieldset[disabled] .btn-default.active {
 
 .btn-primary:active,
 .btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
+.open>.dropdown-toggle.btn-primary {
     background-image: none;
 }
 
@@ -458,4 +478,142 @@ img::-moz-selection {
 
 .bg-primary {
     background-color: #337ab7;
+}
+
+
+/* CSS */
+.closebutton {
+    appearance: none;
+    background-color: #FFFFFF;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Clarkson, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 0;
+    opacity: 1;
+    outline: 0;
+    padding: 1.5em 2.2em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    text-transform: uppercase;
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1), background-color 100ms cubic-bezier(.694, 0, 0.335, 1), color 100ms cubic-bezier(.694, 0, 0.335, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+/* .closebutton:before {
+    animation: opacityFallbackOut .5s step-end forwards;
+    backface-visibility: hidden;
+    background-color: #EBEBEB;
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+    width: 100%;
+}
+
+.closebutton:hover:before {
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+    background-color: rgb(245, 52, 52);
+   
+}
+
+.closebutton:after {
+    background-color: #FFFFFF;
+}
+
+.closebutton span {
+    z-index: 1;
+    position: relative;
+} */
+
+.closebutton {
+    display: inline-block;
+    transition: all 0.2s ease-in;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    color: #090909;
+    padding: 0.3em 0.4em;
+    font-weight: bold;
+    /* Adjusted padding */
+    font-size: 14px;
+    /* Adjusted font size */
+    border-radius: 0.5em;
+    background: #e8e8e8;
+    border: 1px solid #e8e8e8;
+    box-shadow: 4px 4px 8px #c5c5c5, -4px -4px 8px #ffffff;
+    /* Adjusted box shadow */
+}
+
+.closebutton:active {
+    color: #666;
+    box-shadow: inset 2px 2px 8px #c5c5c5, inset -2px -2px 8px #ffffff;
+    /* Adjusted inset box shadow */
+}
+
+.closebutton:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.25);
+    top: 100%;
+    width: 140%;
+    height: 180%;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.closebutton:after {
+    content: "";
+    position: absolute;
+    left: 55%;
+    transform: translateX(-50%) scaleY(1) scaleX(1.45);
+    top: 180%;
+    width: 160%;
+    height: 190%;
+    background-color: #009087;
+    border-radius: 50%;
+    display: block;
+    transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+    z-index: -1;
+}
+
+.closebutton:hover {
+    color: #ffffff;
+    border: 1px solid #a5a7a6;
+    ;
+}
+
+.closebutton:hover:before {
+    top: -35%;
+    background-color: #a5a7a6;
+    ;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.closebutton:hover:after {
+    top: -45%;
+    background-color: #272727;
+    ;
+    transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }

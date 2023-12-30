@@ -10,7 +10,9 @@ router.get("/", (req, res) => {
 router.get("/login_student", (req, res) => {
   res.render("login_student");
 });
-
+router.get("/navbar", (req, res) => {
+  res.render("navbar");
+});
 router.get("/login_admin", (req, res) => {
   res.render("login_admin");
 });
