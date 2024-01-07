@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+         crossorigin="anonymous"
+         />
+      <link rel="stylesheet" href="/admin_complain_page.css" />
+      <!-- <link href="/custom.css" rel="stylesheet">
+      <link href="/bootstrap.css" rel="stylesheet"> -->
+      <title>CSS GRID DASHBOARD</title>
+   </head>
+   <body id="body">
+      <div class="main__container">
+         <div class="main__cards">
+            <div class="card">
+               <i
+                  class="fa fa-user-o fa-2x text-lightblue"
+                  aria-hidden="true"
+                  ></i>
+               <div class="card_inner">
+                  <p class="text-primary-p">TOTAL ACCESS AUTHORITY</p>
+                  <span class="font-bold text-title">1</span>
+               </div>
+            </div>
+            <div class="card">
+               <i class="fa fa-calendar fa-2x text-red" aria-hidden="true"></i>
+               <div class="card_inner">
+                  <p class="text-primary-p">REGISTERED USERS</p>
+                  <span class="font-bold text-title">2467</span>
+               </div>
+            </div>
+            <div class="card">
+               <i
+                  class="fa fa-video-camera fa-2x text-yellow"
+                  aria-hidden="true"
+                  ></i>
+               <div class="card_inner">
+                  <p class="text-primary-p">TOTAL REPORT</p>
+                  <span class="font-bold text-title">340</span>
+               </div>
+            </div>
+            <div class="card">
+               <i
+                  class="fa fa-thumbs-up fa-2x text-green"
+                  aria-hidden="true"
+                  ></i>
+               <div class="card_inner">
+                  <p class="text-primary-p">TOTAL REPORT SOLVED</p>
+                  <span class="font-bold text-title">64</span>
+               </div>
+            </div>
+         </div>
+      </div>
+	  <div>
+		  <h1>Report Data</h1>
+	  </div>
+	  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Id</th>
+		      <th>Room Number</th>
+          <th>Report title</th>
+          <th>Report type</th>
+          <th>Date</th>
+		      <th>Action</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+		   <td>AUSTRALIAN</td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+		  <td>
+            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+         </td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+        <tr>
+          <td>AAC</td>
+          <td>AUSTRALIAN COMPANY </td>
+          <td>$1.38</td>
+          <td>+2.01</td>
+          <td>-0.36%</td>
+        </tr>
+        <tr>
+          <td>AAD</td>
+          <td>AUSENCO</td>
+          <td>$2.38</td>
+          <td>-0.01</td>
+          <td>-1.36%</td>
+        </tr>
+        <tr>
+          <td>AAX</td>
+          <td>ADELAIDE</td>
+          <td>$3.22</td>
+          <td>+0.01</td>
+          <td>+1.36%</td>
+        </tr>
+        <tr>
+          <td>XXD</td>
+          <td>ADITYA BIRLA</td>
+          <td>$1.02</td>
+          <td>-1.01</td>
+          <td>+2.36%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <script src="script.js"></script>
+   </body>
+</html>

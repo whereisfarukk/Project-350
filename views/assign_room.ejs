@@ -8,10 +8,12 @@
       rel="stylesheet"
       href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
     <title>Assign viva schedule</title>
     <style>
       body {
-        font-family: 'Arial', 'Helvetica', 'sans-serif';
+        font-family: 'lato','Arial', 'Helvetica', 'sans-serif';
       }
 
       input {
@@ -42,10 +44,12 @@
           border: 1px solid #ccc;
           border-radius: 4px;
           box-sizing: border-box;
+          margin-top: 1px;
       }
 
       .centered-heading {
         text-align: center;
+        font-family: 'lato';
       }
 
       #data_table {
@@ -64,11 +68,32 @@
       #data_table tr:hover {background-color: #ddd;}
 
       #data_table th {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 8px;
+        padding-bottom: 8px;
         text-align: left;
         background-color: #337ab7;
         color: white;
+      }
+      #table-container {
+      max-height: 300px; /* Set the desired height for the scrollable area */
+      overflow: auto;
+      margin-top: -10px;
+      }
+      #data_table thead {
+      position: sticky;
+      top: 0;
+      background-color: #337ab7;
+      color: white;
+      }
+      .submit{
+        cursor: pointer;
+        margin-top: 3px;
+        
+        font-weight: bold;
+      }
+      #student_id{
+        outline: none; /* Remove default outline on all rows */
+        background-color: #ececec;
       }
     </style>
     
@@ -79,26 +104,30 @@
     </div>
     <form id = "viva_form" action="/auth/assign_room" method="POST">
       <div class="form-row">
-        <label for="student_id">Student ID</label>
+        
         <input type="text" id="student_id" name="student_id" value="<%= student_id%>" readonly>
+        <label for="student_id">Student ID</label>
 
-        <label for="ad_fee_payment_date">Payment Date</label>
         <input type="date" id="ad_fee_payment_date" name="ad_fee_payment_date" required>
+        <label for="ad_fee_payment_date">Payment Date</label>
 
-        <label for="ad_fee_amount">Payment Amount (tk)</label>
         <input type="number" id="ad_fee_amount" name="ad_fee_amount" value="2000" required>
+        <label for="ad_fee_amount">Payment Amount (tk)</label>
 
-        <label for="ad_fee_slip_number">Bank Slip Number</label>
+        
         <input type="number" id="ad_fee_slip_number" name="ad_fee_slip_number"  required>
+        <label for="ad_fee_slip_number">Bank Slip Number</label>
 
-        <label for="room_id">Room Number</label>
+        
         <input type="number" id="room_id" name="room_id" required>
+        <label for="room_id">Room Number</label>
 
-        <input type="submit" value="Submit">
+        <input type="submit" class='submit'value="Submit">
     </div>    
     </form>
 
     <!-- room list -->
+    <div id="table-container">
     <table id="data_table">
       <thead>
         <tr>
@@ -119,6 +148,7 @@
         <% }) %>
       </tbody>
     </table>
+    </div>
     <script>
       const tableRows = document.querySelectorAll('tr[id^=room-]');
       for (const row of tableRows) {

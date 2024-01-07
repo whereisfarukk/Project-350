@@ -10,9 +10,7 @@ router.get("/", (req, res) => {
 router.get("/login_student", (req, res) => {
   res.render("login_student");
 });
-router.get("/navbar", (req, res) => {
-  res.render("navbar");
-});
+
 router.get("/login_admin", (req, res) => {
   res.render("login_admin");
 });
@@ -50,6 +48,9 @@ router.get("/assign_payment", (req, res) => {
   res.render("assign_payment", {data: req.query});
 });
 
+router.get("/admin_complain_page", (req, res) => {
+  res.render("admin_complain_page",{data: req.query});
+});
 
 router.get("/assign_room", (req, res) => {
   const query = 'SELECT * FROM room WHERE occupancy_status < ?';
@@ -189,17 +190,17 @@ router.get("/payment", (req, res) => {
 });
 
 
-router.get("/complaints_details", (req, res) => {
-  const query = 'SELECT * FROM complaint ORDER BY complaint_status';
-  db.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.status(500).send('Error fetching data from the database');
-    } else {
-      res.render("complaints_details", { data: results });
-    }
-  });
-});
+// router.get("/complaints_details", (req, res) => {
+//   const query = 'SELECT * FROM complaint ORDER BY complaint_status';
+//   db.query(query, (error, results) => {
+//     if (error) {
+//       console.log(error);
+//       res.status(500).send('Error fetching data from the database');
+//     } else {
+//       res.render("complaints_details", { data: results });
+//     }
+//   });
+// });
 
 router.get("/leave_requests", (req, res) => {
   const query = 'SELECT * FROM leave_request ORDER BY leave_date';

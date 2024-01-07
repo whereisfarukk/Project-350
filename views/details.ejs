@@ -24,13 +24,20 @@
     background-color: #00A300;
     color: white;
   }
+ #header {
+      position: sticky;
+      top: 0;
+      text-align: center;
+      background-color: #ffffff;
+      padding-bottom: 3px;
+      }
 </style>
 </head>
     <body>
-
-    <h1 align="center">Application Details</h1>
-
-    <table id="data_table">
+      <div id="header">
+        <h1>Application Details</h1>
+      </div>
+      <table id="data_table">
         <tbody>
             <% Object.entries(rowData).forEach(([columnName, columnValue]) => { %>
                 <tr>
@@ -39,8 +46,7 @@
                 </tr>
             <% }); %>
         </tbody>
-    </table>
-
+      </table>
     </body>
 </html>
 
