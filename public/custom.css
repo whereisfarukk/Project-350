@@ -236,6 +236,7 @@ header .header-content .header-content-inner p {
     -moz-transition: all .35s;
     transition: all .35s;
     font: 400 20px "Lato", sans-serif;
+    height: 5.7rem;
 }
 
 .navbar-default .navbar-header .navbar-brand {
@@ -443,12 +444,14 @@ fieldset[disabled] .btn-primary.active {
 .btn {
     border-radius: 300px;
     text-transform: uppercase;
+
 }
 
 .btn-lg {
-    padding: 15px 30px;
+    padding: 15px 20px;
     margin: 10px;
-    width: 200px;
+    width: 220px;
+
 }
 
 ::-moz-selection {

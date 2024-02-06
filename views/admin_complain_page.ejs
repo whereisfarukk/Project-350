@@ -7,6 +7,8 @@
         <link href="/admin_complain_page.css" rel="stylesheet"  />
         <link href="/custom.css" rel="stylesheet" />
         <link href="/bootstrap.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
         <title>Complain</title>
     </head>
     <body id="body">
@@ -102,7 +104,7 @@
                         <th>Id</th>
                         <th>Room Number</th>
                         <th>Report title</th>
-                        <th>Report type</th>
+                        <th>Report desc.</th>
                         <th>Date</th>
                         <th>Action</th>
                     </tr>
@@ -117,8 +119,12 @@
                         <td>2019831033</td>
                         <td>201</td>
                         <td>Chair Broken</td>
-                        <td>+2.01</td>
-                        <td>02/11/2023</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>                       
+                          <td>02/11/2023</td>
                         <td>
                             <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
                             <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
@@ -129,7 +135,11 @@
                         <td>2021831021</td>
                         <td>205</td>
                         <td>bed broken</td>
-                        <td>+2.01</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
                         <td>05/02/2023</td>
                         <td>
                             <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
@@ -141,7 +151,11 @@
                         <td>2017831021</td>
                         <td>305</td>
                         <td>Chair problem</td>
-                        <td>+2.01</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
                         <td>12/04/2022</td>
                         <td>
                             <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
@@ -149,210 +163,128 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
+                        <td>Tawsif Ratul</td>
+                        <td>2019831021</td>
+                        <td>303</td>
+                        <td>Chair problem</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
+                        <td>Zawadul Karim</td>
+                        <td>2017831041</td>
+                        <td>205</td>
+                        <td>Chair problem</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
+                        <td>Semanto Chawdhury</td>
+                        <td>2018831021</td>
+                        <td>3023</td>
+                        <td>Broken Table</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
+                        <td>Robin Ahmed</td>
+                        <td>2018831071</td>
+                        <td>305</td>
+                        <td>Chair problem</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
+                        <td>Saikot Hasan</td>
+                        <td>2021831021</td>
+                        <td>305</td>
+                        <td>Chair problem</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
+                        <td>Minhazur Rahman</td>
+                        <td>2020831021</td>
+                        <td>1033</td>
+                        <td>Bed broken</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
+                        <td>Niloy Mojumder</td>
+                        <td>2022831029</td>
+                        <td>1066</td>
+                        <td>Chair problem</td>
+                        <td>
+                            <button class="action-btn popup-btn" style="font-size: 30px; color: orange;">
+                              <i class="fa fa-envelope"></i>
+                            </button>
+                          </td>  
+                        <td>12/04/2022</td>
+                        <td>
+                            <button class="action-btn_solved" onclick="markAsSolved(this)">Solved</button>
+                            <button class="action-btn_delete" onclick="deleteRow(this)">Delete</button>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAC</td>
-                        <td>AUSTRALIAN COMPANY</td>
-                        <td>$1.38</td>
-                        <td>+2.01</td>
-                        <td>-0.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAD</td>
-                        <td>AUSENCO</td>
-                        <td>$2.38</td>
-                        <td>-0.01</td>
-                        <td>-1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>AAX</td>
-                        <td>ADELAIDE</td>
-                        <td>$3.22</td>
-                        <td>+0.01</td>
-                        <td>+1.36%</td>
-                    </tr>
-                    <tr>
-                        <td>XXD</td>
-                        <td>ADITYA BIRLA</td>
-                        <td>$1.02</td>
-                        <td>-1.01</td>
-                        <td>+2.36%</td>
-                    </tr>
+                    
                 </tbody>
             </table>
+            <div class="popup-wrap">
+                <div class="popup-box">
+                    <!-- description of the popup window -->
+                  <h2>Chair Broken</h2>
+                  <h3>Due to some reason my chair got loose support and suddenly one pillar got broke.</h3>
+                  <a class="close-btn popup-close" href="#">x</a>
+                </div>
+              </div>
         </div>
         <script src="/jquery-1.11.3.min.js"></script>
 
