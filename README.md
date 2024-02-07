@@ -67,6 +67,64 @@ $\textrm{\large There is only one admin i.e. provost,any one with the claim of s
 #### Do complain
 ![image](https://github.com/whereisfarukk/Studymaterial/blob/main/RandomThings/project_350_Images/complainbox.png)
 
+## Codebase Structure
+
+```
+Project-350
+├── controller
+│   ├── auth.js
+│   └── userOperations.js
+│ 
+├── public
+│   ├── images
+│   │    └── images.png
+│   ├── admin_complain_page.css
+│   ├── admin_dash.css
+│   ├── admin_dashboard_applicants.css
+│   ├── application.css
+│   ├── custom.css
+│   ├── dbService.js
+│   ├── index.js
+│   ├── script.js
+│   ├── script_admin.js
+│   ├── script_application.js
+│   └── style.css
+│
+├── routes
+│   ├── auth.js  
+│   └── pages.js
+│
+├── view
+│   ├── admin_complain_page.ejs  
+│   ├── admin_dashboard_accepted_applicants.ejs
+│   ├── admin_dashboard_admitted_applicants.ejs 
+│   ├── admin_dashboard_applicants.ejs
+│   ├── admin_dashboard_rejected_applicants.ejs
+│   ├── admin_dashboard_selected_applicants.ejs
+│   ├── admin_dashboard_viewpayment.ejs
+│   ├── application.ejs
+│   ├── application_status.ejs
+│   ├── assign_payment.ejs
+│   ├── assign_room.ejs
+│   ├── assign_viva.ejs
+│   ├── complain.ejs
+│   ├── complaints_details.ejs
+│   ├── dashboard.ejs
+│   ├── index.ejs
+│   ├── leave_requests.ejs
+│   ├── login_admin.ejs
+│   ├── login_student.ejs
+│   ├── room_details.ejs
+│   └── userApplicationStatus.ejs
+│   
+├── .env
+├── app.js
+├── pakage-lock.json
+└── package-lock.json
+
+```
+
+
 ## Getting Started (How to Configure)
 $\textrm{\large 1.First clone this repository.}$
 ```
