@@ -66,3 +66,34 @@ $\textrm{\large There is only one admin i.e. provost,any one with the claim of s
 
 #### Do complain
 ![image](https://github.com/whereisfarukk/Studymaterial/blob/main/RandomThings/project_350_Images/complainbox.png)
+
+## Getting Started (How to Configure)
+$\textrm{\large 1.First clone this repository.}$
+```
+git clone https://github.com/whereisfarukk/Project-350.git
+```
+$\textrm{\large 2.Install xampp and run.If not installed then go to }$[here](https://linux.how2shout.com/how-to-install-xampp-on-ubuntu-20-04-lts/)
+
+$\textrm{\large 3.open the project in code editor}$
+
+$\textrm{\large 4.Install node on your device}$
+``` 
+sudo apt install nodejs
+```
+$\textrm{\large 5.Install npm}$
+```
+sudo apt install npm
+```
+$\textrm{\large 6.Install dependencies}$
+```
+npm install
+```
+$\textrm{\large 7.Start the server}$
+```
+npm start
+```
+
+$\textrm{\large Now open }$[http://localhost:4000](http://localhost:4000) $\textrm{\large with your browser to see the result.}$
+
+
+
